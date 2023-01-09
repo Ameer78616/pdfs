@@ -1,0 +1,304 @@
+****************************************************
+auto remove
+****************************************************
+apt-get autoremove
+    rm -rf ~/.cache/thumbnails/*
+    du -sh ~/.cache/thumbnails
+    du -sh /var/cache/apt
+    apt-get clean
+    du -sh /var/cache/apt
+
+****************************************************
+Moving files to backup path
+****************************************************
+
+/COC/backup/coc_updateyrs_lemonde
+
+if folder is not available 
+mkdir -R 777 coc_updateyrs_lemonde
+
+
+****************************************************
+Run Post validation  [ANDB server]
+****************************************************
+
+crontab -l                                              ||check for post validation allocation script under the mentioned project
+crontab -l -u devuser                                   ||check for post validation allocation script under the mentioned project
+tail -f [post validation script]
+
+	if the following error appears [Overlap Lock at Sun Jun 27 18:06:05 IST 2021]
+
+ps -ef | grep andp
+kill -9 [previous PID of post validation allocation script]
+tail -f [post valisation script]
+
+result should be [DB successfully created & db object connected].
+
+netstat -tulpn | grep :80
+netstat -tulpn | grep --color :80
+
+****************************************************
+
+
+kill -9 [PID]              | -9 used to kill child ID
+Kill  [PID]                | used to kill parent ID
+p kill [filename]          | pearl script
+
+*****************************************************
+
+mkdir -m777 foldername
+
+Mounting related
+
+systemctl daemon-reload
+
+******************************************************
+Vim replacement cmd
+:%s/find/replace/gci
+******************************************************
+
+Symbolic link
+ln -s [Path name]
+
+**********************************
+
+crontab -l
+tail -f [validation allocation log]                    
+ps -ef | grep adaex                                   // process status | grep is a search option [adaex - keyword]
+
+
+
+Git pull - login & pull cmd
+***************************
+su git
+git pull
+
+
+****************************
+to check query in mysql
+****************************
+mysql -u root -p
+show processlist;
+
+
+adduser -s /sbin/no login -d /andpcoc/coc_andp/files/input andpin
+
+
+****************************
+Zip with password
+****************************
+
+sudo apt install zip unzip
+zip -re output_file.zip file1 folder1
+
+****************************
+Tar exclude 'log'
+****************************
+
+tar -czf filename.tar.gz --exclude='logs' scripts (folder we want to tar)
+
+******************************************************************************************************************************************
+ssh connection [to connect ec2 instance]
+
+*apt-get install openssh-client
+*apt-get install openssh-server ii
+*service ssh status
+*apt-get install nano
+*service ssh restart
+*ssh -i "keyname" "EC2 Public DNS" -l ubuntu
+
+
+Instance downgrade
+***********************************
+
+1. jenkins cron stop
+2. stop the elastic search
+3. stop the aws instance & select the instance type
+4. cd /usr/share/elasticsearch/bin/ & vim elasticsearch.in.sh
+5. Change the ES_MIN_MEM and ES_MAX_MEM value 24g to 10g or how much we want
+6. cd /etc/sysconfig vim elasticsearch Change the heep size to 10gb or how much we assigned 
+6. start the instance.
+7. start the elastic search as well as cron in jenkins
+
+ Volume downgrade/upgrade
+ *********************************
+
+ 1. jenkins cron stop
+ 2. stop the services
+ 3. Create & attach the EBS volume
+ 4. fdisk -l  -- datapath name volume name                                                                         | /dev/xvdf
+ 5. mkfs.ext4 [volume path]                                                                                        | mkfs.ext4 /dev/xvdf
+ 6. mount [volume path] [directory name]                                                                           | mount /dev/xvdf /home/ubuntu/gokul/
+ 7. df -h 
+ 8. after that we need to give chown elasticsearch.elasticsearch [directory name]
+ 9. check blkid
+ 10./etc/fstab [add the blk id with dir]  i.e UUID=0000-000-000-0000980asd / esdata  ext4 errors-remount-ro 0 2
+  
+ mv  -v ~/Downloads/* ~/Videos/
+
+ Modify Volume Add
+ sudo growpart /dev/xvda1 [path]
+ lsblk
+ sudo resize2fs /dev/xvda1 [path]
+ df -h
+
+  
+ ***********************************
+ Service     Port
+
+ ftp    -  20 to 21
+ sql    -  3306
+ apache - 80
+
+ php - 5.4
+mysql- 5.7
+perl - 5
+httpd- 2.4 
+
+mpoffice@kathiranand.in
+************************************
+    HTTP installation in centos
+************************************
+
+sudo yum update
+yum list available | grep httpd
+yum install httpd
+cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
+vi /etc/httpd/conf/httpd.conf
+
+
+****************************************************************************
+   Php Installation - https://www.tecmint.com/install-php-5-6-on-centos-7/
+****************************************************************************
+
+ \\To install PHP 5.6, you have to install and enable EPEL and Remi repository to your CentOS 7 system using the commands below
+yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+yum install yum-utils
+
+  \\choose to install any ***one*** PHP 5.5, PHP 5.6 or PHP 7.2 on CentOS 7
+yum-config-manager --enable remi-php55   [Install PHP 5.5]
+yum-config-manager --enable remi-php56   [Install PHP 5.6]
+yum-config-manager --enable remi-php72   [Install PHP 7.2]
+
+yum install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip php-fileinfo
+php -v
+
+****************************************************************************
+   PhpMyAdmin Installation - https://phoenixnap.com/kb/how-to-install-secure-phpmyadmin-on-centos-7
+****************************************************************************
+
+sudo yum install -y epel-release
+sudo yum –y update
+sudo yum -y install phpmyadmin
+
+  \\IP changing
+vi /etc/httpd/conf.d/phpMyAdmin.conf
+
+
+sudo vim /etc/phpMyAdmin/config.inc.php
+        
+        Alias /phpMyAdmin /usr/share/phpMyAdmin
+        Alias /phpmyadmin /usr/share/phpMyAdmin
+                      ||
+        Alias /MySecretLogin /usr/share/phpMyAdmin
+
+sudo systemctl restart httpd.service
+IP/phpmyadmin
+
+****************************************************************************
+  MySql Installation - https://www.howtoforge.com/tutorial/how-to-install-mysql-57-on-linux-centos-and-ubuntu/
+****************************************************************************
+
+ \\Centos
+yum localinstall https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+yum -y install mysql-community-server
+systemctl start mysqld
+systemctl enable mysqld
+netstat -plntu
+systemctl is-enabled mysqld
+
+    grep 'temporary' /var/log/mysqld.log
+    mysql -u root -p
+
+    ALTER USER 'root'@'localhost' IDENTIFIED BY 'Newhakase-labs123@';
+    flush privileges;
+
+    mysql -u root -p
+    TYPE NEW PASSWORD: Newhakase-labs123@
+
+    create database hakaselabs;
+    create user hakase@localhost identified by 'Hakase123@';
+
+    grant all privileges on hakaselabs.* to hakase@localhost identified by 'Hakase123@';
+    flush privileges;
+        exit from sql
+
+    mysql -u hakase -p
+    TYPE THE PASSWORD: Hakase123@
+    show databases;
+
+
+ \\Ubuntu
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.3-1_all.deb
+dpkg -i mysql-apt-config_0.8.3-1_all.deb
+apt-get update
+apt-get install -y mysql-community-server
+systemctl start mysql
+systemctl enable mysql
+systemctl is-enabled mysql
+
+****************************************************************************
+  Perl Installation - 
+****************************************************************************
+
+yum update
+yum install perl
+rpm -qa | grep -i perl-5.16
+perl -v
+perl HelloWorld.pl
+
+****************************************************************************
+  Mysql replication
+****************************************************************************
+https://www.howtoforge.com/mysql_database_replication
+
+***************
+swap space
+***************
+
+https://linuxize.com/post/how-to-add-swap-space-on-centos-7/
+sudo swapon --show
+sudo fallocate -l 1G /swapfile
+sudo dd if=/dev/zero of=/swapfile bs=1024 count=1048576
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo nano /etc/fstab
+    /swapfile swap swap defaults 0 0
+sudo  
+sudo free -h
+
+***************************************************************
+
+install ssmtp
+chmod 640 /etc/ssmtp/ssmtp.conf
+    nano /etc/ssmtp/ssmtp.conf
+        UseSTARTTLS=YESṭ
+        FromLineOverride=YES
+        root=admin@example.com
+        mailhub=smtp.gmail.com:587
+        AuthUser=goppiikrishnan@gmail.com
+        AuthPass=gopiikrishnan@gmail
+sendmail goppiikrishnan@gmail.com < email.txt
+    touch email.txt
+        Subject:sending email test
+        testing body
+
+------------------------------
+Java specific version install
+------------------------------
+
+apt install openjdk-8-jdk
+
+https://www.codegrepper.com/code-examples/sql/uninstall+mysql+centos+7

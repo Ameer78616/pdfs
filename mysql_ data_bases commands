@@ -1,0 +1,80 @@
+            MYSQL USER CREATION
+
+1.  How to login mysql
+    mysql -u root -p
+       or 
+    mysql -p
+
+2.  How to check mysql users
+    select user from mysql.users;
+
+3.  How to check mysql hosts
+    select host from mysql.users;
+
+4.  How to create a new user 
+    syntax
+    create user 'username'@'localhost' identified by 'password';
+
+5.  How to assing a password
+    set password for usarname@host=password('12345');
+
+6.  How to give  privelages on user
+    syntax
+    grant [type of permision] on [data base name].[tablename] to'username'@'localhost'; 
+       
+7.  How to edit the permission granted
+    syntax
+    revoke [type of permision] on [data base name].[table name] to'username'@'localhost'; 
+    
+8.  How to delete a user
+    drop user 'username'@'localhost';
+
+9.  How to check the database
+    show databases;
+
+10. How to create a new databases
+    create database databasename;
+
+11. How to delete a database
+    drop database databasename;
+
+12. how to see user database table
+    use databasename;
+
+13. How to check the table
+    show tables;
+
+14. How to create a table
+    create table newdatabasename(columnname varchar(40));
+
+15. How to open the table
+    describe tablename;
+
+16. How to Add Information to a mysql Table
+    INSERT INTO `tablename` (`id`,`name`,`food`,`confirmed`,`signup_date`) VALUES (NULL, "John", "Casserole","Y", '2012-04-11');
+
+17. How to open the add information or table information in mysql table
+    select *(you want see id or name some this thing's) from tablename;
+
+18. How to Update Information in the Table
+    update tablename set (you change option) (`confrimed`= 'y') where `tablename`.`name`='columname';
+
+19. How to Add a column 
+    ALTER TABLE tablename ADD columname (VARCHAR(40)) after name;
+
+20. How to Delete a column 
+    ALTER TABLE tablename DROP columname;
+
+21. How to Delete a row 
+    DELETE from [table name] where [column name]=[field text];
+
+22. How to backup and import on mysql
+    $sudo mysqldump -u username -p databasename to backup > backup-filename.sql
+    To see the backup file
+     $ls .sql files are backup 
+    After than delete one database 
+
+23. How to restore and backup on mysql database
+    mysql -u username -p newdatabasename < filename.sql
+
+

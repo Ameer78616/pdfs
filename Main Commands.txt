@@ -1,0 +1,2742 @@
+################# Downloaded python install ################
+
+python setup.py build
+
+python setup.py install150,027150,027
+
+################## svn revert command ###################
+
+svn update -r "revert ID"
+
+################## git revert command ###################
+
+git log --abbrev=commit --pretty=oneline
+
+
+git reset --hard "revert ID"
+
+################## git False problem #####################
+
+git config --global --bool --add http.sslVerify false
+
+################# convert mysql bin log to sql #####################
+
+mysqlbinlog mysql-bin.000001 > test.sql
+
+################# How to install CPANM ###############
+
+cd /usr/bin
+curl -L https://cpanmin.us/ -o cpanmdevelopment
+chmod +x cpanm
+
+cpanm Search::Elasticsearch
+
+############### How to check which port is running ###############
+
+netstat -tulpn | grep :8088
+	
+################ Find max folder size ##############
+
+du -sh * | sort -h    --- Folder
+
+ls -lhS | more        --- files
+
+################ Check mails in queue - Linux ###############
+
+mailq - it'll list all the mails in queue
+postsuper -d mailID - remove specific mail from queue
+postsuper -d ALL - remove all mails from queue
+
+############## mysqldump export to csv for a table ##################
+
+mysql -u username -p database_name -e "select * from table_name"  -B | sed "s/'/\'/;s/\t/\",\"/g;s/^/\"/;s/$/\"/;s/\n//g" > table_name.csv
+
+############# How to check download and upload speed ##################
+
+curl -s  https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
+
+
+
+############ How to check installed version in server ##########
+
+yum list installed | grep "ImageMagick"
+
+############### Reset  root password ######################
+
+update user set authentication_string=password('kq9dB*') where user='root';
+
+################ How to set sql_mode in mysql/my.cnf ############
+
+[mysqld]
+sql-mode=""
+
+################ How to set valid passwd for mysql ###############
+
+SHOW PLUGINS;
+
+UNINSTALL PLUGIN validate_password;
+
+############### Update or change password##################################
+
+MySQL stores usernames and passwords in the user table inside the MySQL database. You can directly update a password using the following method to update or change passwords:
+
+1) Login to the MySQL server, type the following command at the shell prompt:
+
+mysql -u root -p
+
+2) Use the mysql database (type commands at the mysql> prompt):
+
+mysql> use mysql;
+
+3) Change password for a user:
+
+MySQL 5.7.5 and earlier
+
+mysql> update user set password=PASSWORD("newpass") where User='ENTER-USER-NAME-HERE';
+
+MySQL 5.7.6 and newer
+
+mysql> SET PASSWORD FOR 'ENTER-USER-NAME-HERE'@'localhost' = PASSWORD("newpass");
+
+4) Reload privileges:
+
+mysql> flush privileges;
+mysql> quit
+
+This method you need to use while using PHP or Perl scripting.
+
+
+################ sar command not found ###################
+
+yum install sysstat
+
+################# any error with sql mode ########################
+
+set global sql_mode='';
+
+############ How to relocate local IP to public IP in SVN ###############
+
+svn 
+
+switch --relocate http://182.73.36.4/repos/cocprojects/coc_stt/ http://192.168.12.12/repos/cocprojects/coc_stt/
+
+                      ------------- Public SVN url ---------------  ----------------Local SVN url ----------------- 
+
+############# memcache can't restart ###############
+
+to be check ---- netstat -tulpn | grep :11211
+
+############# Repair in Table ##################
+
+mysqldump skip specific table
+
+dump -u root -p acwbeta --ignore-table=acwbeta.ars_file_log > acwbeta_`date -I`.sql
+
+Ignore particular table.
+
+mysqldump --routines -h burrelles.cluster-cqqpdwner09e.us-west-2.rds.amazonaws.com -u pmaroot -p media_portal --ignore-table=media_portal.mp_article --ignore-table=media_portal.mp_lib_art_map_old --ignore-table=media_portal.mp_lib_art_map --ignore-table=media_portal.mp_dash_report_schedule_mail_tracker --ignore-table=media_portal.mp_auto_tag_search_archive --ignore-table=media_portal.mp_article_mail_map --ignore-table=media_portal.mp_print_cat_map_bkp --ignore-table=media_portal.mp_qa_approve_lock_log > media_portal.sql
+
+mysqldump --routines -h burrelles.cluster-cqqpdwner09e.us-west-2.rds.amazonaws.com -u pmaroot -p bl_production --ignore-table=bl_production.blp_media_read1 --ignore-table=bl_production.blp_media_read1_archive --ignore-table=bl_production.blp_result_file_info_archive > bl_production.sql
+
+mysqldump --routines -h burrelles.cluster-cqqpdwner09e.us-west-2.rds.amazonaws.com -u burrelles -p media_portal
+
+Without data with particular tables.
+
+mysqldump --no-data -h burrelles.cluster-cqqpdwner09e.us-west-2.rds.amazonaws.com -u burrelles -p media_portal mp_agr_art_map mp_article mp_article_mail_map mp_auto_tag_search_archive mp_bl_pub_details_temp mp_bl_pub_info_archive mp_dash_report_schedule_mail_tracker mp_delivery_matrix_tracker mp_delivery_matrix_tracker_archive mp_error_info mp_lib_art_map mp_lib_art_map_old mp_qa_approve_lock_log mp_qa_approve_log > media_portal_backup.sql
+
+mysqldump --routines -h burrelles.cluster-cqqpdwner09e.us-west-2.rds.amazonaws.com -u burrelles -p 141218_media_portal mp_users mp_product_price_map mp_prod_fea_map mp_product_info mp_usa_states mp_user_log mp_contact mp_user_map mp_address_info mp_customer mp_billing_info mp_cus_agr_map mp_cus_prd_map mp_customer_log mp_agreement mp_agr_log mp_agr_prd_map mp_buy_product_details mp_buy_product_details_log > 141218_media_portal_account_`date -I`.sql
+
+mysqldump --routines -h burrelles.cluster-cqqpdwner09e.us-west-2.rds.amazonaws.com -u burrelles -p 141218_media_portal mp_search_group mp_search_profile mp_keywords mp_search_prf_map mp_search_profle_instruction mp_search_profile_publication > 141218_media_portal_Search_`date -I`.sql
+
+mysql -h burrelles.cluster-cqqpdwner09e.us-west-2.rds.amazonaws.com -u burrelles -p
+
+mysql -h burrelles-stagging.cluster-cqqpdwner09e.us-west-2.rds.amazonaws.com -u burrelles -p
+
+Without data
+
+mysqldump -d -u root -p mydatabase > mydatabase_`date -I`.sql
+
+mysqldump -u root -p mydatabase > mydatabase_`date -I`.sqlgit
+
+With data and procedure
+
+mysqldump --routines -u root -p mydatabase > mydatabase_`date -I`.sql
+
+Only Routines:
+
+mysqldump --routines
+ --no-create-info --no-data -u root -p
+
+Dump particular time :
+
+mysqldump database table_bame --where="date_column BETWEEN '2012-07-01 00:00:00' and '2012-12-01 00:00:00'"
+
+--single-transaction
+
+Table corrupt in mysql 
+
+mysqlcheck -c DB -u root -p
+
+repair specific table
+
+mysqlcheck -r acwbeta ars_file_log -u root -p
+
+
+CREATE TABLE authors (id INT, name VARCHAR(20), email VARCHAR(20));
+
+MyD6Km$@9*
+
+
+time mysql -u root -p -h 172.16.16.53 -e "show databases;"       ----- network connectivity
+
+mysqldump --routines -u root -p --quick --max_allowed_packet=1G coc_dda > coc_dda-`date -I`.sql   ---- Lost connection to MySQL server 
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+find . -type f -empty | wc -l    it will show count
+
+find . -type f -empty it will show files
+
+@@@@@@@@@@@@@@@@@@@@@@Recover a MySQL root password@@@@@@@@@@@@@@@@@
+
+# /etc/init.d/mysql stop
+# mysqld_safe --skip-grant-tables &
+# mysql -u root
+mysql> use mysql;
+mysql> update user set password=PASSWORD("newrootpassword") where User='root';
+mysql> flush privileges;
+mysql> quit
+# /etc/init.d/mysql stop
+# /etc/init.d/mysql start
+
+############ ssh conncet with pem-key ###############
+
+ssh -i "burrelles-cluster-pandi.pem" -p41999 pandi@52.8.153.46
+
+######### mysql passwd setting policy #############
+
+SET GLOBAL validate_password_policy=LOW;	
+
+uninstall plugin validate_password;
+
+########## Ghostscripts updated version available in Mercury server ###########
+
+/home/rajesh/ghostscript
+
+/DATA/cocprojects/scripts/coc_nll
+
+########## If can't install Module ############
+
+apt-cache search DBI | grep perl       
+
+########## List installed perl module #########
+
+instmodsh  (perl)
+php -m list    (php)
+php -m | grep -i module_name	
+php -i | grep -i pear | grep Version
+ 
+############## check the jpg & tif files success or not #############
+
+nconvert -fullinfo filename 
+
+############# search for perl service ##############
+
+perl -e 'use Image::Magick'
+
+
+########## list packages ############
+
+rpm -qa | grep php  (for ubuntu) dpkg --list | grep php
+
+php --version
+
+########## cpan module install from broswer #########
+
+perl Make.pl
+
+make & make install MyD6Km$@9*
+
+############ mysql connecting with host ########### 
+
+mysql -h 192.168.12.9 -uroot -p
+
+########## check mysql passwd asign or not ##########
+
+mysql_secure_installation  
+
+############# check tf services are disable ##########
+
+service iptables status   --Firewall is not running
+getenforce                -- Disable
+vim /etc/selinux/config   -- Disable
+chkconfig httpd on        -- Enable
+chkconfig vsftpd on 	  -- Enable
+chkconfig mysqld on       -- Enable
+chkconfig sshd on 	  -- Enable
+chkconfig nginx on  	  -- Enable
+
+########### Checking installation #############
+
+rpm -qa | grep mysql
+rpm -qa | grep vsftpd
+rpm -qa | grep httpd	
+rpm -qa | grep perl
+rpm -qa | grep php
+rpm -qa | grep svn
+rpm -qa | grep ftp
+
+######### SVN server #############
+
+svn server local IP  --192.168.12.12
+           public IP --182.73.36.4
+
+ ################## SVN user Creation #############
+
+For COC-user
+
+cd /DATA/
+htpasswd -m passwdfile sijo
+
+then, goto
+vim /DATA/perlResource/conf/authz
+(add username for perl)
+
+for VB.Net  ( for flash,perl,android,lli also same )
+
+cd /DATA/
+htpasswd -m passwdfile sijo
+
+then, goto
+vim /DATA/ALLREPOS/ninestar/conf/authz
+(add username for vb)
+
+URL : http://192.168.12.12/ninestar-repos/
+
+ap-south1
+
+wget http://85.25.217.86/coc_kms/zips/20161017_3.zip
+
+########### check NFS ##########
+
+vim /etc/exports
+
+############ delete caches memory ############ 
+
+sync ; echo 3 > /proc/sys/vm/drop_caches
+
+############ delete data ############
+
+find . -mtime +50 -printf "%TY/%Tm/%Td | %p\n" -delete | sort  (print instruction according to user)
+
+find -type f -name '*.log' -mtime +1 -print -delete
+
+find -type f -name '*.log' -mmin +1440 -print
+
+find . -mtime +60 -print -delete
+
+grep -R 'keyword' *
+
+find /data/volume01/coc_gka/files/workfiles/20181019/ -name '*.xml' -exec cp {} /data/volume01/backup/workfiles/20181019/  \;
+find /data/volume01/coc_gka/files/workfiles/20181020/ -name '*.xml' -exec cp {} /data/volume01/backup/workfiles/20181020/  \;
+
+grep -r "IP/name" *
+
+########## delete the query for replication server #############
+
+login into kmspain live server db through cmd,
+
+show variables like '%sql_log_bin%';
+
+set sql_log_bin=0;
+
+use coc_kms;
+
+run the delete query
+
+show variables like '%sql_log_bin%';
+
+set sql_log_bin=1;
+
+exit;
+
+########### Slow Query ############
+
+Slow query:
+
+[mysqld]
+long_query_time=2
+log-slow-queries=/var/log/mysql/log-slow-queries.log
+
+Binlog:
+
+log-bin = /path/to/log
+expire-logs-days = 14
+max-binlog-size  = 500M
+
+time mysql -u root -pMyD6Km$@9* -h 172.16.16.53 -e "show databases"
+
+
+############ no of max connections assigned #############
+
+Rename the index.php to index.php-- in webfiles path (/var/www/html)
+
+check dababases processlist use command (show processlist;)
+
+check perl is running use command (ps -ef | grep perl )
+
+then take the dump for required DB
+
+then run the script
+
+# perl /data/volume01/coc_gka/scripts/dp_arch_prc.pl
+ 
+
+In the script we need to change INTERVAL (for days) 
+
+/etc/my.cnf
+
+show global variables like '%connections%';
+
+set no of conn in run time 
+set global max_connections = 500; (in mysql we need to change )
+
+then restart the mysql
+
+then login phpmyadmin and optimize the deleted tables.
+
+optimize table coc_article_info;
+
+mysqlcheck -u -p --optimize --databases (name)
+
+then restart the mysql
+
+########## Slave Staus ###########
+
+show slave status\G;
+
+Slave_IO_Running: Yes
+
+Slave_SQL_Running: Yes
+
+Seconds_Behind_Master: 0 ( it will Zero sec means no deley in master and slave, if more then 1000 sec we need to check)
+
+
+show processlist;media
+
+show full processlist;
+
+########### Get Public IP using Linux Terminal ############
+
+wget http://ipecho.net/plain -O - -q ; echo
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Auto qa running by manually in aarhus - 01 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+/dist/customer_qc_tst/newspaper-ninestars-QA-suite-2.0/bin/qabatch.sh /stglun1-prod/files/aarhus_webbeta/output/B400027040282-RT2/ "jdbc:postgresql://jupiter.statsbiblioteket.dk/mfpak?user=ninestars&password=qBC2wYE9&ssl=true" > B400027040282.txt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% BNL-PPA-Replacement ( Tiff-Replacement) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+cd /storage/luxemburg/Dont-Del/KM1234833/1880-02-18-01
+perl /home/rajesh/img_resize/resize_image.pl $PWD
+cp 0001.tif /nll/coc_bnl/files/input/KM1234833/0157.tif
+cp 00004.jpg /nll/coc_bnl/files/workfiles/KM1234833/1880-02-18-01/1880-02-18-01-0160.jpg
+
+
+@@@@@@@@@@@@@@@@@@@@@ AARHUS-PPA-Replacement ( Tiff-Replacement) @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+login to 1st Server
+go to cd /mnt/AArhus/PPAC
+larification/To-
+Upload/400026108711-04 ( real name )
+
+run the script perl /home/systems/img_resize/resize_image.pl $PWD
+
+need to check which server this bacth login to phpmyadmin and go to batch info serch using batch name
+
+cp *.jpg /mnt/aarhus-1/files/aarhus_webbeta/input/400026108711/400026108711-04/
+
+cp * /stglun2-prod/files/aarhus_webbeta/input/400026108711/400026108711-04/
+
+IF ISSUE SETTING
+
+Connect the local server (Aarhus -kanchi) paste the above copy files to cd /aarhus/files/batch_id/issue_id/
+
+if need to connect aarhus 2nd server go to 1st server
+# cd /home/systems   
+and run the server2.sh shell scripts
+UID--- systems Source names in QA app
+PID--- @9*
+
+
+&&&&&&&&&&&&&&&&&&&&&&&& Auto-QA-Failed ( Title Error ) &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+
+goto server-3 cd /stglun2-prod/files/aarhus_webbeta/output/B400027100323-RT1     (if files not available in mentionted partician, check with another partician )
+
+check with log folder to see which real got issue,
+
+cd /stglun2-prod/files/aarhus_webbeta/output/B400027109010-RT1/400027109010-08/
+
+ll - lsit the folder
+
+tab -2 vim /stglun2-prod/files/aarhus_webbeta/output/autoqa_logs/B400027107530-RT1.log
+
+View the error.
+
+tab -3 in log path tab 
+
+cd /stglun2-prod/files/aarhus_webbeta/output/autoqa_logs 
+
+grep -a 2 title B400027042153-RT1.log | grep -v title
+
+tab -1 open the batch name and goto respective reel 
+
+mkdir test in tab -1
+
+
+copy all the issue name in tab 3 log files (2007-10-31-01)
+
+goto tab -1, mv batcheslist to test (mv -f 1 to 100 test)
+
+\n\n 
+(space)
+
+Go to tab -2 View the error and copy the headlines and past the below command line 
+
+Go to tab -1
+
+find -type f -name '*edition.xml' | sort | while read d; do sed -i 's/<mods:title>Haderslev Avis<\/mods:title>/<mods:title>Haderslev Avis. Dannevirke<\/mods:title>/' $d; done
+
+Link Means below command:
+
+find -type l -name '*edition.xml' | sort | while read d; do sed -i 's/<mods:title>Svendborg Amts-Tidende eller Syd-Fyens og Langelands Avis<\/mods:title>/<mods:title>Svendborg Amts politiske Avis og Avertissements-Tidende<\/mods:title>/' $d; done
+
+publication
+
+find -type l -name '*edition.xml' | sort | while read d; do sed -i 's/<mods:placeTerm type="text">Slagelse<\/mods:placeTerm>/<mods:placeTerm type="text">København<\/mods:placeTerm>/' $d; done
+
+
+check md5sum file
+
+To recreate MD5 for Edition XML
+
+Go to test folder
+
+find -type f -name '*edition.xml' | sort | while read d; do echo `md5sum $d | tr -s ' ' | cut -d' ' -f1` '*'`basename $d` > $d.md5; done
+
+find  -type f -name '*edition.xml' | sort | while read d; do echo `md5sum $d | tr -s ' ' | cut -d' ' -f1` '*'`basename $d`;printf "\t";cat $d.md5; done
+
+mv -f * ../
+
+tab -1 Flim XML
+
+open the log file,
+
+check with tab 2 log file in the following command vim /stglun2-prod/files/aarhus_webbeta/output/autoqa/autoqa_logs/B400027040071-RT1.log
+
+check with tab - 1 open the film xml - vim B400027048623-RT1/400027048623-03/nationaltidende-400027048623-03.film.xml 
+
+add the title,
+
+ex: <avis:titles>Nationaltidende</avis:titles>
+
+finally run the md5sumA success for 400026100508. PFA log file
+
+
+fip='svendborgamtstidende-400027105236-01.film.xml' && printf "\t<--$fip-->\n" && echo `md5sum $fip | tr -s ' ' | cut -d' ' -f1` '*'`basename $fip` > $fip.md5 && chmod 777 $fip.md5 &&
+echo `md5sum $fip | tr -s ' ' | cut -d' ' -f1` '*'`basename $fip` && printf "\t" && cat $fip.md5;
+
+fip='sjaellandspostenringsted-400027108731-09.film.xml' && printf "\t<--$fip-->\n" && echo `md5sum $fip | tr -s ' ' | cut -d' ' -f1` '*'`basename $fip` > $fip.md5 && chmod 777 $fip.md5 &&
+echo `md5sum $fip | tr -s ' ' | cut -d' ' -f1` '*'`basename $fip` && printf "\t" && cat $fip.md5;
+
+
+
+rm -rf test echo
+if it single xml we can run the for ex:Monday (13-3-2017) at 2:00PM to 3:00PM
+
+md5sum fynsamtsavissvendborg-1883-12-19-01-0758.alto.xml > fynsamtsavissvendborg-1883-12-19-01-0758.alto.xml.md5
+
+open and check with another xml
+
+
+%%%%%%%%%%%%%%% NLN Tiff replacement %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+First goto the path mentioned in mail
+
+NLN -2 SERVER (58.68.110.52)
+
+ex : cd /stglun2-prod/nln_inventory/files/ScanningInput/PPAClarification/filename
+
+then run the below script
+
+perl /home/systems/img_resize/resize_image.pl $PWD
+
+PPA
+
+cp *.jpg /NLN2-data/nln_service1/files/input/filename
+cp * /stglun1-prod/nln_service1/files/input/filename
+
+ Issue settings , Imageconversion
+
+cp /NLN2-data/nln_service1/files/workfiles/dagsavisen_2005-285/2005-02-09-1/
+
+#############################################ABP TIFF replacement#########################
+
+/nll/coc_abp/files/scanninginput/ABP_PPA_Replacement/
+
+perl /home/sijo/img_resize/resize_image.pl $PWD  ------abp
+
+cp * /nll/coc_abp/files/input/ABP_SEP1971-SEP1971
+
+@@@@@@@@@@@@@@@@@@@@@@@@@ AARHUS LOAD @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Connect all 4 server . (Aarhus1, Aarhus2,Aarhus3,Aarhus_kanchi)
+
+Aarhus1, Aarhus2,Aarhus3 - crontab stop- "sh /home/systems/services_stop.sh"
+
+Aarhus_kanchi - "service crond stop"
+
+Afetr the confirmation.
+
+Aarhus1 Aarhus3 - "service httpd stop" - Continously monitor the scripts are running or not. "ps -ef | grep perl"
+
+Aarhus3 - "service mysqld stop" & check the load with TOP command.
+
+Start all the stop services. 
+
+Aarhus3 - "service mysqld start"
+
+Aarhus1 Aarhus3 - "service httpd start"
+
+Aarhus_kanchi - "service crond start"
+
+Aarhus1, Aarhus2,Aarhus3 - crontab start- "sh /home/systems/services_start.sh"
+
+Aarhus1 Aarhus3 -Continously monitor the scripts "ps -ef | grep perl"
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Check the httpd count
+
+ps -ef | grep httpd |wc -l
+
+netstat -an | grep :80 | wc -l
+
+grep -i -r 'out of memory' /var/log/  checking list
+
+ps auwx --sort rss 
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+check nconvert version: ./nconvert
+
+##########################kakadu installation###############################################
+
+copy /home/rajesh/ in stagging server kakadu sw to /usr/local/share/
+
+go to /usr/local/share/kakadu/lib_cfiles
+
+cp libc-2.14.1.so /lib64/
+rm -f libc.so.6 && ln -s libc-2.14.1.so libc.so.6
+
+go to /usr/local/share/kakadu/bin/
+cp libkdu_v72R.so /lib64/
+ldconfig
+
+type,
+
+./kdu_compress
+
+goto /usr/local/share/kakadu/bin/
+
+type,
+PATH=$PATH:/usr/local/share/kakadu/bin
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/share/kakadu/bin
+export PATH
+export LD_LIBRARY_PATH
+
+which kdu_compress
+it will show
+/usr/local/share/kakadu/bin/kdu_compress
+
+local modules path:
+/usr/lib64/perl5
+
+#################################################################
+error 530 login incorrect
+In Centos 7 latest vsftpd Login incorrect
+vim /etc/pam.d/Vsftpd
+Disable the below mentioned line
+auth required pam_shells.so
+#######################################################
+
+files transfered via ftp will get full permission
+local_umask=0000
+file_open_mode=0777
+
+
+**************************************Exclude Files with zip **********************************
+
+tar czf webfiles.tar.gz --exclude='files' --exclude='input' --exclude='output' --exclude='zonexmlsave' --exclude='logs-backpush' --exclude='logs' --exclude='log_ppa' --exclude='log_unlock' webfiles
+
+tar czf scripts.tar.gz --exclude='files' --exclude='input' --exclude='output' --exclude='zonexmlsave' --exclude='logs-backpush' --exclude='logs' --exclude='log_ppa' --exclude='log_delete' scripts
+
+tar -czf test.tar.gz test
+tar -xf test.tar.gz
+
+tar -czf scripts.tar.gz --exclude='logs' scripts 
+
+zip dinesnation.zip source 
+zip -r dinesnation.zip source
+
+tar -cf subdir. subdir
+tar -xvf subdir.tar 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%Connect server to other server%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ssh -p port username@IP
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+**************** SCREEN *******************
+
+screen -S name_of_screendbbkp
+partition
+ctrl+a+d  
+
+screen -r id/name_of_screen
+
+screen -ls 
+
+screen -r and exit
+
+screen -X -S screen ID or name quit   -----screen delete
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%BLS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+                    PERL (SANTHOS /PREM)
+
+
+PRIMARY ES 3 Servers - cd /home/git/Serachsystem 
+
+PORTAL ES NEW all server - cd /home/git/Serachsystem/Serachsystem
+
+STAGING SERVER 1 and 4 server- cd /home/git/Searchsystem   
+STAGING SERVER 5TH server - cd /home/git/SearchsystemNew   
+
+                    PHP (BALANCE ALL)
+
+PORTAL WEB 1 and 3- cd /home/git/mynewsdash 
+                    
+
+PORTAL WEB 2 - cd /home/git/mynewsdash/deveopment   
+
+STAGING SERVER 5TH server- cd /home/git/mynewsdash/deveopment   
+                           cd /home/git/mynewsdash  
+
+outside config- conf/conf.php
+mediaport config - mediaportal/config/config.php  
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+############# DB maintenance script available ##########
+
+Gorkana------ perl /data/volume01/coc_gka/scripts/dp_arch_prc.pl
+
+Fantasy------ perl /DATA/cocscripts/coc_newsaccess/db_arch_nac.pl
+
+prcirish------ perl /home/rim/dp_arch_prcirish.pl
+
+precise UK------- perl /DATA/bkp-live/pandi/dp_arch_prc.pl
+
+eclips-------- perl /home/rajesh/dp_eclips_prc.pl   OR  perl /home/rim/dp_eclips_prc.pl
+
+Opoint--------- perl /data/coc/coc_opoint/scripts/db_arch_opoint.pl
+
+Bls------------ perl /home/rajesh/db_maintanace/db_bls_maintanace.plain  OR perl /home/devuser/db_maintanace/db_bls_maintanace.pl
+
+KMF--------- perl /data1/coc_kmf/scripts/db_arch_kmf.pl
+
+Isentia -----perl /home/rajesh/db_arch_cosource.pl  OR perl /home/devteam/db_arch_cosource.pl
+
+RPM ---------/home/centos/db_arch_lfmi.pl
+
+&&&&&&&&&&&&&&&&&&&&&&DB maintance data checking&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+Confirm the production team
+
+Check the dasboard status
+
+Rename the index.php  file
+
+stop the cron service (service crond stop) or (/ete/init.d/crond stop)
+
+check the running scripts (ps -ef |grep perl)
+
+Kill the scripts (kill -9 ID)
+
+Take the mysql dumb in space available path (mysqldump --routines -u root -p mydatabase > mydatabase_`date -I`.sql)
+
+check the space and compare live and dumb file seize
+
+compare the DB entry of live and archive DB (coc_file info.table)
+
+Run the DB manintance scripts
+
+compare the DB entry of live and archive DB (coc_file info.table)
+
+Optimise all the tables
+
+start cron service (service crond start) or (/ete/init.d/crond start)
+
+check the  scripts are running or not  (ps -ef |grep perl)
+
+Rename the index.php  file
+
+Send mail to production Team. 
+
+
+############## how to create ftp user in ubuntu ##############
+
+useradd -s /bin/rbash/ -d /path to path username
+
+############## how to create ftp user in centos #############
+
+adduser -s /sbin/nologin -d /DATA/cocprojects/files/coc_wma/ wmafiles
+
+############# staging epaper databse passwd #################
+
+username - epaper
+passwd - epaper
+
+############ Vsftpd configuration ###################
+
+vim /etc/vsftpd/vsftpd.conf    42G   38G  2.1G  95% /
+anonymous_enable=NO
+local_umask=000
+
+#################### rsync command for copy files from one server to another server ##################
+
+rsync -avz -e "ssh -p 35922" /DATA/cocprojects/webfiles/coc_kms suthakar@192.168.12.43:/DATA/cocprojects/webfiles/
+
+rsync -a -e "ssh -p 41999"  webfiles sijo@172.16.16.43:/home/sijo/
+
+#################### OCR Manually Running command #################
+
+date && python get_coordinates.py -i /home/rnd/INPUT/ -o /home/rnd/OUTPUT/ -t /home/rnd/TEMP/ && date
+
+#################### Httpd config ##########################
+
+vim /etc/httpd/conf/httpd.conf
+
+DirectoryIndex index.html index.html.var login.php index.php
+
+########### Symlink all files from a base directory to a target directory ##############
+
+for f in $(ls -d /home/pandiyarajan/link/*_t.jpg); do ln -s $f /home/pandiyarajan/target; done && ls -al /home/pandiyarajan/target
+
+########## mis Project ############
+
+https://pandi:pandi\$123@gitlab.ninestars.in/Tech-OPS/MIS.git webfiles
+
+cat /var/log/mysqld.log | grep "temporary password"
+
+
+####### if cluster is red and unassigned shards is (1 or 2) it won't come to green we need to delete the index then only it will come to green #########
+
+cluster status check (if red)
+-----------------------------
+
+curl -XGET http://localhost:9200/_cat/indices | grep red
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  9  171k    9 16300    0     0  11632      0  0:00:15  0:00:01  0:00:14 11634red   open 201703090520   2 1                                  
+100  171k  100  171k    0     0   122k      0  0:00:01  0:00:01 --:--:--  122k
+
+Delete the index 
+----------------
+curl -XDELETE http://localhost:9200/201703090520
+
+##########  :%s/\/DATA/gci ######### :%s/systems/rajesh/gci
+
+
+
+########## How to find OCR fix Machine ############
+
+1.conncet coc_bls DB
+2.go to coc_file_log and click search and type 63 in cfl_close_pid column and enter.
+3.Get the tool instance id from cfl_tool_ins_id column
+4.take that id and go to coc_tool_instance table
+5.search and paste that id on cti_tool_instance_id column and enter.
+6.it will show the IP address
+
+############## Given host allow acess ########################
+
+vim /etc/hosts.allow
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&BLS log fails&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+Go to the BLS server (Burrells)
+
+check the scripts
+
+ps -ef | grep perl
+
+Go to Database
+
+open the Customer log table in coc dashboard
+
+search the log in that table
+1919-10-11-01
+change the status.(0 - ready to lock, 1 -Already lock)
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&BNL WORKFILES MOVE &&&&&&&&&&&&&&&&&&&&&&&&&&
+
+s | cp *.tif /nll/coc_bnl/files/workfiles/KM1234574/1919-10-11-01
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+scp /home/sijo/sijo/file.txt (local transfer file path) suthakar@192.168.12.88:/home/suthakar/new (transfering file path)
+
+scp -P 57493 3.txt rim@94.18.218.187:path
+&&&&&&&&&&&&&&&&&&&&&&&&&Prcise Report Mismatch&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+prcise 2 DB
+
+show slave status\G
+
+Error found means check the error.
+
+start slave
+
+SET GLOBAL sql_slave_skip_counter = 1
+
+****************************************************************************
+Check the ISP
+
+curl -s  https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
+
+****************KMS***********************
+/coc_kmspain/files/output -london
+
+/data1/coc_kms/files/output-kms live
+
+
+If files not download means:
+
+check the london DB -> ftp details table -> unlock the particular FTP IP.
+
+check the downloader log 
+
+gka - output -/var/log/secure
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+Delete indices in BLS
+
+RED INDICES
+curl -s -XGET 'http://54.236.35.230:9200\/_cat/indices?v' | grep red        // Email ES 
+curl -s -XGET 'http://54.153.26.64:9200\/_cat/indices?v' | grep red         // staging
+curl -s -XGET 'http://52.8.153.46:9200\/_cat/indices?v' | grep red          // Primary
+curl -s -XGET 'http://52.35.203.233:9200\/_cat/indices?v' | grep red        // Main
+curl -s -XGET 'http://54.77.1.155:9202\/_cat/indices?v' | grep red          // LFMI PRIMARY
+curl -s -XGET 'http://34.248.228.178:9200\/_cat/indices?v' | grep red          // LFMI Main
+
+regex del line - ^\n, ^[ \t]\n
+regex del old date - ...20170401......
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+mysql -LFMI
+
+RDS : lfmi-media-portal-cluster-1.cluster-c2tuecp1oalg.eu-west-1.rds.amazonaws.com
+
+     mysqldump -h lfmi-media-portal-cluster-1.cluster-c2tuecp1oalg.eu-west-1.rds.amazonaws.com --routines -u lfmiroot -p
+
+
+Username : lfmiroot - Lfm19mptl
+
+
+Login Command : mysql -h lfmi-media-portal-cluster-1.cluster-c2tuecp1oalg.eu-west-1.rds.amazonaws.com -u lfmiroot -p 
+
+Table dump command: mysql -h lfmi-media-portal-cluster-1.cluster-c2tuecp1oalg.eu-west-1.rds.amazonaws.com -u lfmiroot -p lfmi_portal mp_lib_art_map > mp_lib_art_map_`date -I`.sql 
+
+************************************************************************************************************************
+GIT CONFILICT
+
+Mannualy copy the files in git lab and paste in live server script 
+
+git commit -m 'local changes'  (CONFLICT files path)
+
+git commit -am 'local changes' Enter
+
+git pull
+
+
+already 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ftp path changing in /ete/passwd
+              
+                 new path      exisiting user name  
+usermod -d /pop/coc_pop/files/ popfiles
+
+sftp creation ------------ https://www.tecmint.com/restrict-sftp-user-home-directories-using-chroot/
+
+lftp -u herald,23herald13 195.57.82.205        --------lftp
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+KMS -IRELAND & LONDON
+mysql -h kmspain.cluster-cvuutdjkypbw.eu-west-1.rds.amazonaws.com -u devuser -p
+
+LFMI
+mysql -h  lfmimysql.cvuutdjkypbw.eu-west-1.rds.amazonaws.com -u lfmiadmin -p
+
+lfmiroot
+Lfm19mptl
+
+mysql -h burrelles.cluster-cqqpdwner09e.us-west-2.rds.amazonaws.com -u media_portal -p
+         burrelles.cluster-cqqpdwner09e.us-west-2.rds.amazonaws.com       
+         burrelles.cluster-ro-cqqpdwner09e.us-west-2.rds.amazonaws.com - Reader
+         burrelles.cluster-cqqpdwner09e.us-west-2.rds.amazonaws.com - Writer
+
+mysql -h burrelles-stagging-us-west-2a.cqqpdwner09e.us-west-2.rds.amazonaws.com -u 
+
+bl_production
+pmaroot
+pma@9*P
+
+mysql-h techops -u techop
+
+techops/Techop$@9*
+
+devuser
+de$*U$eR
+
+scp /home/sijo/prithiv/file.txt suthakar@192.168.12.88:/home/suthakar/new
+**************************************************************************
+Date change
+
+stop crond
+
+kill the manager scripts
+
+stop apache / httpd
+
+stop mysql
+
+After time change
+
+start mysql
+
+start apache /httpd
+
+start crond
+
+set global sql_mode='';
+
+
+cmnt----- date -s "29 OCT 2017 11:14:00"
+
+
+date --set="Sat Mar 30 2019 4:27:00"
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+ arn:aws:iam::aws:policy/AdministratorAccess 
+
+Access key ID -AKIAJH6JBY3TQZFD7J6Q 
+
+Secret access key - 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
+
+
+wget http://122.183.243.41/mydatabase.tar.gz
+
+vim /etc/httpd/conf/httpd.conf 
+
+58.68.110.46.
+
+PUBLIC IP CHECK ----- curl ipinfo.io/ip  
+
+Table Dump only &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+mysqldump -u root -p coc_kmitaly coc_client_contract_titlemap > coc_kmitaly_`date -I`.sql
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+pkill perl
+
+$$$$$$$$$$$$$$$$$$ DDA TIFF REPLACEMENT $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+Batch Info table
+
+storage_status table
+
+
+cd /stglun3-prod/coc_dda/files/ScanningInput/PPA_Replace/date/set/filename
+
+perl /home/rajesh/img_resize/resize_image.pl $PWD   OR  perl /home/devuser/img_resize/resize_image.pl $PWD
+
+cp *.jpg /data/coc_dda/files/input/ -1
+
+cp * /data1/coc_dda/files/input  -5
+
+cp * /stglun4-prod/coc_dda/files/input -2
+
+cp * /stglun7-prod/coc_dda/files/input -7
+
+
+server1		/data/coc_dda/files
+server2		/stglun4-prod/coc_dda/files/input
+server3		/stglun1-prod/coc_dda/files/input
+server4		/stglun2-prod/coc_dda/files/input
+server5		/data1/coc_dda/files/input
+server6		/stglun6-prod/coc_dda/files/input
+server7		/stglun7-prod/coc_dda/files/input
+server8		/stglun8-prod/coc_dda/files/input
+server9 	/stglun5-prod/coc_dda/files/input
+
+
+Replace path 
+
+cd /data/coc_dda/files/input/Batch
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+sftp - sftp -oPort=41999 devuser@188.138.72.140
+
+##########################################
+
+
+SELECT *FROM `ars_batch_info`WHERE `abi_batch_name`IN ('BookNo-3_Vol-135','BookNo-3_Vol-311','BookNo-3_Vol-919_SR-III','BookNo-4_Vol-1569_SR-III','Adl-BookNo-1_Vol-3940_SR-I','Adl-BookNo-4_Vol-842_SR-I'
+
+)
+
+
+'Adl-BookNo-1_Vol-3836_SR-I','Adl-BookNo-1_Vol-4521_SR-I','Adl-BookNo-1_Vol-4523_SR-I','Adl-BookNo-1_Vol-5378_SR-I','Adl-BookNo-1_Vol-8361_SR-III','Adl-BookNo-1_Vol-8363_SR-III','Adl-BookNo-1_Vol-8369_SR-III','Adl-BookNo-1_Vol-8443_SR-III','Adl-BookNo-1_Vol-8449_SR-III','Adl-BookNo-4_Vol-847_SR-I','Adl-BookNo-4_Vol-866_SR-I','Adl-BookNo-4_Vol-1227_SR-I','Adl-BookNo-4_Vol-1301_SR-I','Adl-BookNo-4_Vol-1303_SR-I','BookNo-3_Vol-232','BookNo-3_Vol-246','BookNo-3_Vol-315','BookNo-3_Vol-1061_SR-III','BookNo-3_Vol-1077_SR-III'
+
+
+'BookNo-3_Vol-135','BookNo-3_Vol-311','BookNo-3_Vol-919_SR-III','BookNo-4_Vol-1569_SR-III','Adl-BookNo-1_Vol-3940_SR-I','Adl-BookNo-4_Vol-842_SR-I'
+
+SELECT *
+FROM `ars_batch_info`
+WHERE `abi_batch_name`
+IN (
+
+'ARC_COMM_null_77_1895_VolII_183','ARC_COMM_null_171_1907_null_044','ARC_COMM_null_208A_null_VolIII_246','ARC_COMM_null_237_null_null_154'
+
+)
+______________________________________________________________________________
+
+git remote show origin  - Identify the git repository
+
+svn info -Identify the svn repository
+
+svn resolved <filename or directory that gives trouble> - conflict
+
+curl -XGET localhost:9200 elastic search version
+
+
+ll /etc/localtime
+
+primary-2 days
+staging-3 days 
+
+Identify the 0byte file
+find "$dir" -size 0
+
+init 0
+
+portaladmin@ninestars.in
+
+Portal@dmin@9*
+
+
+svn upgrade "project name"
+
+
+KMF UPLOAD
+----------
+ftp.tnsmi.fr
+ninestars1
+ni16rs05
+
+Path : /EXPORT_SOURCE
+
+KMF DOWNLOAD
+------------
+
+ftp.tnsmi.fr
+ninestars
+nin28ars04
+
+Path: /IMPORT_SOURCE
+
+OPOINT DOWNLOAD
+---------------
+
+ftp4.ninestars.in
+norway
+N0rW@y$
+
+OPOINT UPLOAD 
+-------------
+
+ftp.tnsmi.fr
+
+ninestars
+nin28ars04
+
+Path : /IMPORT_SOURCE_TEST
+
+%%delete ppa completed files in andp%%
+
+go to process table and take it process id for PPA, issuecreation, issuecreationfix  (EX: 2,21,22)
+
+then go to batch info table SELECT * FROM `coc_batch_info` WHERE `cbi_process_id` NOT IN ('2', '21', '22')
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+OS-version- cat /etc/redhat-release 
+
+    Ubantu- lsb_release -a
+
+
+############################################################
+
+precise Irish del path- input/hold $ output/mergeout
+
+:%s/COC\/coc_wma\/files\/home\/git\/cocprojects\/coc_npp1\/file/gci
+
+%s/DATA\/cocprojects\/files\/coc_lgb/home\/git\/cocprojects\/coc_lgb\/files/gci
+
+%s/home\/git/cocprojects\/coc_lgb\/files/DATA\/cocprojects\/files\/coc_lgb/gci
+
+/home/git/cocprojects/coc_lgb/files
+
+%s/172.16.16.47/172.16.16.60/gci
+
+###################################################################
+
+	
+# vim /etc/vsftpd/vsftpd.conf
+
+anonymous_enable=NO
+local_umask=000
+uncomment the below line
+chroot_list_enable=YES
+chroot_list_file=/etc/vsftpd/chroot_list
+
+add the below lines below this line 
+connect_from_port_20=YES
+pasv_address= IP
+pasv_addr_resolve=YES
+pasv_enable=YES
+pasv_max_port=50500
+pasv_min_port=50000
+virtual_use_local_privs=YES
+userlist_enable=YES
+pasv_promiscuous=YES
+port_enable=YES
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CPAN:
+
+check the module- perl -e 'use (module name)'
+check the version cpan -D module name
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% KMI server maintanance %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+stop cron  services in all servers.
+
+Befor mysql stop to stop slave in Replication server.
+
+stop mysql services all other servers.
+
+Once finished the server maintance 
+
+start mysql service in live DB server after that check - show variables like '%sql_mode%';
+
+it came error means 
+set global sql_mode =''; OR set sql_mode ='';
+
+
+start mysql service in slave DB server after that check- show variables like '%slave_type_conversions%';
+
+set global slave_type_conversions="ALL_NON_LOSSY,ALL_LOSSY";
+
+start mysql in replication server and start the slave (start slave;)
+
+start all service in all servers.(mysql & cron)
+
+start elasticsearch service (/etc/init.d/elasticsearch start) in KMI ARCHIVE SERVER.
+
+start nginx in ES servers
+
+1, check all the partions are properly mounted or 
+
+Fantacy:
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/sda5             255G  142G  100G  59% /
+tmpfs                  16G   88K   16G   1% /dev/shm
+/dev/sda2             194M   27M  158M  15% /boot
+/dev/sdb1             3.2T  2.0T  1.1T  66% /gnine
+/dev/sdb2             1.9T  1.3T  467G  74% /DATA
+/dev/sdb3             2.0T  1.6T  261G  86% /coc
+/dev/mapper/mpathdp1  2.0T  1.1T  876G  55% /emc2-nlsas-lun1
+172.16.16.36:/stglun1-prod
+                       19T   18T  953G  96% /stglun1-prod
+
+Archive:
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/sda3             889G  496G  348G  59% /
+tmpfs                  32G   72K   32G   1% /dev/shm
+/dev/sda1             190M  134M   46M  75% /boot
+/dev/sdb1             2.0T  4.0G  2.0T   1% /data
+/dev/sdb2              19T   18T  952G  96% /stglun1-prod
+172.16.16.38:/emc2-nlsas-lun1/coc/coc_kmitaly
+                      2.0T  1.1T  875G  55% /kmitaly-live
+
+
+2, check the services status
+
+/etc/init.d/elasticsearch status  -  KMI ARCHIVE servers & NEW ES servers
+/etc/init.d/memcached status -      Fantacy server
+/etc/init.d/nginx status
+/etc/init.d/vsftpd status
+/etc/init.d/httpd status
+/etc/init.d/crond status
+/etc/init.d/nfs status
+/etc/init.d/mysqld status
+
+Any process move continous fix queau - check nfs service 
+
+2, Confirm to production & system team.
+
+SET group_concat_max_len = 2048;
+
+#####################################################################################################################
+
+5.7 mysql 
+
+show variables like '%sql_mode%';
+
+set global slave_type_conversions="ALL_NON_LOSSY,ALL_LOSSY";
+
+
+ show variables like '%sql_mode%';
++---------------+--------------------------------------------+
+| Variable_name | Value                                      |
++---------------+--------------------------------------------+
+| sql_mode      | STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION |
++---------------+--------------------------------------------+
+1 row in set (0.00 sec)
+
+ set global sql_mode ='';
+Query OK, 0 rows affected (0.03 sec)
+
+show variables like '%sql_mode%';
++---------------+--------------------------------------------+
+| Variable_name | Value                                      |
++---------------+--------------------------------------------+
+| sql_mode      | STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION |
++---------------+--------------------------------------------+
+1 row in set (0.00 sec)
+
+set sql_mode ='';
+Query OK, 0 rows affected (0.00 sec)
+
+show variables like '%sql_mode%';
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| sql_mode      |       |
++---------------+-------+
+1 row in set (0.00 sec)
+
+
+STOP SLAVE; SET GLOBAL SQL_SLAVE_SKIP_COUNTER=1; START SLAVE;
+
+
+Got fatal error 1236 from master when reading data from binary log: 'Client requested master to start replication from impossible position'
+
+cmnt:                              live bin log                   live position
+change master to master_log_file='mysql-bin.000049', master_log_pos=34765594;
+
+
+IP address : 139.162.57.139
+
+If any of the service is not running means you can follow the below mentioned procedures.
+
+MonitorX API
+    1) cd  /home/chandru/monitorix/
+    2) forever start ServerMonitorAPI.js
+
+Mail Server API
+    1) cd /home/chandru/MAILAPI/
+    2) forever start apiMail.js
+
+
+Check mysql connection:
+
+show global variables like '%connections%';
+
+show status where `variable_name` = 'Threads_connected';
+
+set no of conn in run time :
+
+set global max_connections = 800; (in mysql we need to change )
+
+set global expire_logs_days=30; (in mysql we need to change )
+
+MEMCACHE:
+
+systemctl status memcached
+
+run to different user
+
+memcached -d -p 11213 -u memcached -m 64 -c 1024
+
+ps -ef | grep mem -------identify the memcahe port
+[root@ip-172-31-30-179 ~]# telnet localhost 11212
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+delete bl_source_list
+DELETED
+get bl_source_list
+END
+-- 
+
+ls -1 | wc -l
+
+HTTP listing off
+
+Go to http config edit     Options Index FollowSymLinks to     Options FollowSymLinks
+
+
+DirectoryIndex index.html index.html.var add (login.php index.php)
+
+netstat -tulpn	
+
+sestatus
+
+SELinux status:                 enabled
+SELinuxfs mount:                /sys/fs/selinux
+SELinux root directory:         /etc/selinux
+Loaded policy name:             targeted
+Current mode:                   enforcing
+Mode from config file:          enforcing
+Policy MLS status:              enabled
+Policy deny_unknown status:     allowed
+Max kernel policy version:      31
+
+ vim /etc/selinux/config
+
+After
+
+SELinux status:                 enabled
+SELinuxfs mount:                /sys/fs/selinux
+SELinux root directory:         /etc/selinux
+Loaded policy name:             targeted
+Current mode:                   permissive
+Mode from config file:          disabled
+Policy MLS status:              enabled
+Policy deny_unknown status:     allowed
+Max kernel policy version:      31
+
+coc_kmitaly_replication_2018-06-10.sql
+
+
+MYSQL:
+
+Centos-6.5
+yum install perl-DBD-mysql
+
+##########################################################################################3
+DDA server maintance:
+
+STOP all cron services and also OFF the chkconfig .
+
+open replication server login to mysql then STOP slave and STOP mysql service and also OFF the chkconfig
+
+STOP mysql in 1 & 2DB server and also OFF the chkconfig
+
+
+AFTER MAINTANCE
+
+START mysql in 1 & 2DB server and also ON the chkconfig
+
+login 2DB  mysql and do the following cmnt
+
+ show variables like '%sql_mode%';
++---------------+--------------------------------------------+
+| Variable_name | Value                                      |
++---------------+--------------------------------------------+
+| sql_mode      | STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION |
++---------------+--------------------------------------------+
+1 row in set (0.00 sec)
+
+If above table displays means some problem is there.so enter the below cmnts.
+
+5.7 version mysql
+
+
+set sql_mode ='';
+
+         OR
+
+set global sql_mode ='';
+
+The try the above cmnt
+
+show variables like '%sql_mode%';
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| sql_mode      |       |
++---------------+-------+
+1 row in set (0.00 sec)
+
+
+Its came above means its OK.
+
+START mysql in replication server and login to mysql then START SLAVE.
+
+CHECK replication status.
+
+START all cron services and also ON the chkconfig .
+
+screen mode status in 1st server
+
+screen name DDA
+
+cd /coc_dda/schedule1.js
+
+run the below script in screen 
+
+node schedule1.js 
+
+############################################################################
+
+
+
+apt-get build-dep package_name
+
+
+toolinstance - validation unlock
+
+
+ /NLN2-data/nln_service1/webfiles
+
+ s3cmd ls s3://kantarmedia-input/
+
+ s3cmd ls s3://coc-frontpage-input/
+
+s3cmd ls s3://main-es-snapshot/New_Main_ES_Cluster/
+du -H s3://
+
+aws s3 ls s3://bucket name
+
+bucket name
+
+ufw status
+
+&&&&&&&&&&&&&&&&&&&&& Procedure – set the time zone on a per user basis:&&&&&&&&&&&&&
+
+vi /home/vivek/.bashrc 
+
+add the below line in .bashrc file
+export TZ="/usr/share/zoneinfo/Asia/Calcutta"
+AND
+run the same below cmnt to cmnt promt
+export TZ="/usr/share/zoneinfo/Asia/Calcutta"
+
+referal URL
+https://www.cyberciti.biz/faq/howto-linux-set-time-zone-per-user-basis/
+
+####################Server time zone change###############################
+
+cd /etc/
+    unlink localtime
+    ln -s /usr/share/zoneinfo/America/New_York localtime
+    ln -s /usr/share/zoneinfo/EST /etc/localtime
+
+    Time zone change command
+cp /usr/share/zoneinfo/EST /etc/localtime
+
+
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+MySQL Frequently Used Commands
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+How to delete only in Master without affeecting to slave:
+
+Need to disable log_bin
+
+SHOW VARIABLES like '%sql_log_bin%';
+
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| sql_log_bin   | ON   |
++---------------+-------+
+1 row in set (0.05 sec)
+
+set sql_log_bin=0;
+
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| sql_log_bin   | OFF   |
++---------------+-------+
+1 row in set (0.05 sec)
+
+Agin check it off or not 
+
+SHOW VARIABLES like '%sql_log_bin%';
+
+then enter the query with same console
+
+set sql_log_bin=1;
+
+SHOW VARIABLES like '%sql_log_bin%';
+
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| sql_log_bin   | ON   |
++---------------+-------+
+1 row in set (0.05 sec)
+
+
+Replication: ( https://www.howtoforge.com/mysql_database_replication )
+
+###################################################
+
+wkhtmltopdf
+	yum install -y xorg-x11-fonts-75dpi
+	yum install -y xorg-x11-fonts-Type1
+yum install -y libXrender libXext openssl openssl-devel fontconfig
+Now its available stagging    /home/suthakar
+tar -xzvf wkhtmltox.tar.gz 
+cd wkhtmltox
+cd bin/
+cp * /usr/bin/
+which wkhtmltopdf
+wkhtmltopdf -V
+#####################################
+
+PDFTK Installation
+
+wget https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/pdftk-2.02-1.el6.x86_64.rpm
+
+rpm -iUvh pdftk-2.02-1.el6.x86_64.rpm
+
+centos 7 
+
+yum localinstall https://www.linuxglobal.com/static/blog/pdftk-2.02-1.el7.x86_64.rpm
+
+####################################
+
+s3cmd install:
+
+vim /etc/yum.repos.d/s3tools.repo
+[s3tools]
+name=Tools for managing Amazon S3 - Simple Storage Service (RHEL_6)
+type=rpm-md
+baseurl=http://s3tools.org/repo/RHEL_6/
+gpgcheck=1
+gpgkey=http://s3tools.org/repo/RHEL_6/repodata/repomd.xml.key
+enabled=1
+
+ yum install s3cmd
+ s3cmd --configure
+
+ap-south-1
+
+****************KMS***********************
+/coc_kmspain/files/output -london
+
+/data1/coc_kms/files/OUTPUT-kms live
+
+KMS ftp Dashboard:
+http://35.176.61.160/ftp-dashboard/ftp
+user:rim
+passwd: rim@9*
+
+
+If files not download means:
+
+check the london DB -> ftp details table -> unlock the particular FTP IP.
+
+yum whatprovides servicename
+
+##########################################lftp test perl scripts################################################
+
+* * * * * perl /coc_kmspain/lftp_scripts/coc_kms_lftp_sync_allocator_server1.pl >> /coc_kmspain/scripts/downloader/logs/`date -I`-coc_kms_lftp_sync_allocator_server1.log 2>&1 - 
+
+
+#* * * * * perl /coc_kmspain/lftp_scripts/coc_kms_lftp_sync_allocator_server2.pl >> /coc_kmspain/scripts/downloader/logs/`date -I`-coc_kms_lftp_sync_allocator_server2.log 2>&1
+
+
+* * * * * perl /coc_kmspain/lftp_scripts/ftp_lists_mem_cache_insert.pl >> /coc_kmspain/scripts/downloader/logs/`date -I`-ftp_lists_mem_cache_insert.log 2>&1- files 
+########################################################################################
+
+# mv /var/lib/mysql/mysql.sock /var/lib/mysql/mysql.sock.bak
+
+# service mysqld start
+
+###############################################################
+
+KMITALY Domin Name URL
+http://kmiarch.ninestars.in/index.php?rt=login/login
+
+
+lfmi_portal_ns_demo
+ns_demo_production
+
+S13372118s
+
+4246287418
+
+install node service use below cmnt:
+
+npm install node-schedule
+
+apt-get purge nodejs npm
+wget https://nodejs.org/dist/v8.5.0/node-v8.5.0.tar.gz
+tar zxvf node-v8.5.0.tar.gz
+./configure
+make install
+node -v
+npm -v
+
+Imager 1.006
+
+
+/sftpdata/gorkana - Gorkana customer input path
+
+
+check the services list
+service --status-all
+
+/etc/sysconfig/httpd   unmask 000 --------------file permission in apache
+
+file_open_mode=0777  ---- vsftpd.conf
+
+systemctl restart httpd
+
+################# create htaccess ##############
+
+vim /etc/httpd/conf/httpd.conf
+
+AllowOverride None  ---> AllowOverride All
+
+
+cd phpMyAdmin/
+
+vim .htaccess
+
+AuthName "Authorized Users Only"
+AuthUserFile /var/www/secure/.htpasswd
+AuthType Basic
+require valid-user
+
+then go to /var/www/
+
+create secure folder
+
+mkdir secure
+
+ads user 
+
+htpasswd -c /var/www/secure/.htpasswd karthik                
+passwd- karthik@9*
+
+add user Admin
+
+htpasswd -m /var/www/secure/.htpasswd devteam 
+passwd- devteam@9*
+
+
+yum list installed
+
+apt list --installed
+
+du -sk * | sort -rn
+
+########################################ES install procedure###########################################################
+
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.1.1.rpm
+    sha1sum elasticsearch-5.1.1.rpm 
+   sudo rpm --install elasticsearch-5.1.1.rpm 
+  sudo chkconfig --add elasticsearch
+    cd /etc/elasticsearch/
+    ll
+    vim jvm.options 
+    vim elasticsearch.yml 
+    wget http://ipecho.net/plain -O - -q ; echo
+    wget http://mirror.centos.org/centos/6/os/x86_64/Packages/java-1.8.0-openjdk-1.8.0.171-8.b10.el6_9.x86_64.rpm-md
+     rpm -iUvh java-1.8.0-openjdk-1.8.0.171-8.b10.el6_9.x86_64.rpm
+                    OR
+    yum install java-1.8.0-openjdk.x86_64
+
+     Enable Public IP
+----------------
+
+Enabling : network.host: 0.0.0.0 at the elasticsearc.yml file togther with
+adding the following entries to /etc/security/limits.conf
+End of file:
+
+elasticsearch soft memlock 65536
+elasticsearch hard memlock 65536
+elasticsearch nofile 65536
+elasticsearch soft nproc 65536
+
+   
+
+   yum install telnet
+   telnet 172.16.3.21 9200
+   telnet 172.16.3.21 8080
+   free -g
+       mkdir -m 777 elasticsearch
+    chown elasticsearch.elasticsearch elasticsearch
+      /etc/init.d/elasticsearch start
+    wget http://ipecho.net/plain -O - -q ; echo
+    yum install java-1.8.0-openjdk.x86_64
+    netstat -tulpn
+    df -h
+  cd /elasticsearch/logs/
+
+   sestatus  - disabled
+   getenforce  - disabled
+
+vim /etc/resolv.conf
+ifup eth0
+vim /etc/sysconfig/network-scripts/ifcfg-eth0
+ifup eth0
+/etc/init.d/network restart
+
+
+UBUNTU:
+1st:
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.1.2.deb
+sha1sum elasticsearch-5.1.2.deb
+sudo dpkg -i elasticsearch-5.1.2.deb
+
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.deb
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.deb.sha512
+shasum -a 512 -c elasticsearch-6.2.4.deb.sha512 
+sudo dpkg -i elasticsearch-6.2.4.deb
+
+vim jvm.options 
+vim elasticsearch.yml 
+sudo apt-get install openjdk-8-jre
+
+/var/lib/dpkg/statoverride  --- after purge edit this files
+
+OR
+
+wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.0.1.deb
+sudo dpkg -i elasticsearch-1.0.1.deb
+sudo update-rc.d elasticsearch defaults 95 10
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java7-installer
+java -version
+
+sudo bin/plugin -i elasticsearch/marvel/latest
+
+
+2nd:
+curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.deb
+sudo dpkg -i elasticsearch-6.2.4.deb
+sudo /etc/init.d/elasticsearch start
+sudo apt-get install openjdk-8-jre
+
+Enable Public IP
+----------------
+
+Enabling : network.host: 0.0.0.0 at the elasticsearc.yml file togther with
+adding the following entries to /etc/security/limits.conf
+End of file:
+
+elasticsearch soft memlock 65536
+elasticsearch hard memlock 65536
+elasticsearch nofile 65536
+elasticsearch soft nproc 65536
+
+############################kibana Installation#########################
+Refer: https://www.elastic.co/guide/en/kibana/6.2/deb.html
+
+wget https://artifacts.elastic.co/downloads/kibana/kibana-6.2.4-amd64.deb
+shasum -a 512 kibana-6.2.4-amd64.deb 
+sudo dpkg -i kibana-6.2.4-amd64.deb
+
+wget https://artifacts.elastic.co/downloads/kibana/kibana-5.1.2-x86_64.rpm
+sha1sum kibana-5.1.2-x86_64.rpm 
+sudo rpm --install kibana-5.1.2-x86_64.rpm
+
+vim /etc/kibana/kibana.yml
+
+change the below line.
+
+server.host: "localhost" TO server.host: "0.0.0.0"
+
+service kibana restart
+
+sudo vi /etc/yum.repos.d/kibana.repo
+/etc/yum.repos.d/kibana.repo
+
+   [kibana-4.1]
+   name=Kibana repository for 4.1.x packages
+   baseurl=http://packages.elastic.co/kibana/4.1/centos
+   gpgcheck=1
+   gpgkey=http://packages.elastic.co/GPG-KEY-elasticsearch
+   enabled=1
+sudo yum -y install kibana
+sudo vi /opt/kibana/config/kibana.yml
+In the Kibana configuration file, find the line that specifies host, and replace the IP address ("0.0.0.0" by default) with "localhost":
+sudo systemctl start kibana
+
+###################################################################
+Nginx Installation
+1. sudo yum install epel-release
+2. sudo yum install nginx
+3. service nginx start
+4. chkconfig nginx on
+5. vim /etc/nginx/nginx.conf and change 80 to 8080
+
+
+#######################################ES snapshot #########################################################
+
+1) To take snapshot for multiple indices
+
+	curl -XPUT 'localhost:9200/_snapshot/my_backup/backup_201907?pretty' -H	'Content-Type: application/json' -d' { "indices": "201803",	"ignore_unavailable": "true", "include_global_state": false }'
+
+2)	snapshot multiple index restore
+
+	curl -XPOST 'localhost:9200/_snapshot/my_backup/snap_20190730/_restore?pretty' -H 'Content-Type: application/json' -d' { "indices": "italy,archivedata", "ignore_unavailable": true, "include_global_state": true}'
+
+	curl -XPOST 'localhost:9200/_snapshot/my_backup/snap_20190730/_restore?pretty' -H 'Content-Type: application/json' -d' {"ignore_unavailable": true, "include_global_state": true}'
+	
+3) snapshot status check
+
+	curl -XGET 'localhost:9200/_snapshot/my_backup/snap_20171207?pretty'
+	
+4) Listing snapshot name only 
+	
+	curl -X GET "localhost:9200/_cat/snapshots/my_backup?v&s=id"
+
+ 5)   Delete cmnd
+
+	curl -XDELETE http://localhost:9200/
+
+6) listing indices
+
+   curl -XGET http://localhost:9200/_cat/indices
+
+
+###################################module manully install#############################################
+
+ $ wget http://search.cpan.org/CPAN/authors/id/S/SS/SSIMMS/PDF-API2-2.019.tar.gz
+ $ tar zxvf PDF-API2-2.019.tar.gz
+ $ cd PDF-API2-2.019
+ $ perl Makefile.PL
+ $ make
+　$ make test
+ $ make install
+
+ https://cpan.metacpan.org/authors/id/D/DR/DRTECH/Search-Elasticsearch-1.17.tar.gz
+ tar zxvf Search-Elasticsearch-1.17.tar.gz
+ cd Search-Elasticsearch-1.17
+ perl Makefile.PL
+  make
+　 make test
+  make install
+######################################
+mysql 5.1.73
+
+wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.RPM
+    rpm -ivh mysql-community-release-el7-5.noarch.rpm
+   vim /etc/yum.repos.d/mysql-community.repo
+    yum install vim
+   vim /etc/yum.repos.d/mysql-community.repo
+   vim /etc/yum.repos.d/mysql-community-source.repo
+  yum install mysql mysql-server
+
+
+
+rpm -qa | grep php
+ yum search common|grep php55
+###################### screen multi window###################################
+
+
+[devel@rice ~]$ screen -d -m -S dbgwindow
+
+    Attach to the screen session in your terminal window
+
+[devel@rice ~]$ screen -x dbgwindow
+
+    Have the other person (logged into the same account) also attach to the screen session
+
+[devel@rice ~]$ screen -x dbgwindow
+#############################################################################
+
+Rename User
+
+usermod -l login-name old-name
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+find . -type f | wc -l   --- file count on current dir
+
+find . -type d -empty ------empty folder list
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$AWS configure$$$$$$$$$$$$$$$$$$$$$$$
+
+yum install 
+
+##############Log path change#############
+sudo /etc/init.d/rsyslog stop
+sudo mv /var/log /mnt/d2/
+sudo ln -s /mnt/d2/log /var/log
+sudo /etc/init.d/rsyslog start
+
+#################PYTHON install##########################
+
+Ubuntu:
+$ sudo add-apt-repository ppa:deadsnakes/ppa
+$ sudo apt update
+$ sudo apt install python3.6
+python -V
+
+Centos:RPM
+sudo yum install -y https://centos7.iuscommunity.org/ius-release.rpm
+sudo yum update
+sudo yum install -y python36u python36u-libs python36u-devel python36u-pip
+python -V
+
+# wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tar.xz
+# tar xJf Python-3.6.3.tar.xz
+# cd Python-3.6.3
+# ./configure
+# make
+# make install
+
+Centos:TAR
+sudo yum groupinstall -y "Development Tools"
+wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz
+tar -xJf Python-3.6.4.tar.xz
+cd Python-3.6.4
+./configure
+make
+make test
+make install
+check link
+yum install cups.x86_64
+yum install cups-devel.x86_64
+  pip3 install pycups
+  pip3 install PyYAML
+  pip3 install pycrypto
+pip3 also provide link
+
+ yum install python-cups
+  python3.6
+ pip3 install pycups
+  yum search cups
+  yum install python-cups.x86_64
+  yum install cups.x86_64
+  yum install python-cups.x86_64
+  pip3 install pycups
+  yum search python-cups
+  yum search cups
+  yum install cups-devel.x86_64
+  pip3 install pycups
+  pip3 install PyYAML
+
+  python3 -m py_compile
+  python3 -c "module name"
+
+#########################################################################
+Identify the sezie of ftp folders:
+
+install LFTP in local machine and then use the below command.
+
+echo "du -hs ." | lftp -u FTPuser,FTPpassword FTPhost
+
+#############################################
+
+ES plugin list
+
+/user/share/bin/plugin --list
+
+/user/share/elasticsearch/plugin
+
+
+
+/root/.ssh
+
+
+#####################################
+
+
+################# Elasticsearch 5.1.1 installation #################
+
+Enable Public IP
+----------------
+
+Enabling : network.host: 0.0.0.0 at the elasticsearc.yml file togther with
+adding the following entries to /etc/security/limits.conf
+End of file
+
+elasticsearch soft memlock 65536
+elasticsearch hard memlock 65536
+elasticsearch nofile 65536
+elasticsearch soft nproc 65536
+###################################################
+
+stop slave;
+
+stop slave;CHANGE MASTER TO MASTER_LOG_FILE='mysql-bin.005137', MASTER_LOG_POS=4;start slave;
+
+start slave;
+########################
+
+burftp.burrellesluce.com
+ftp9stout
+ktbm3mur
+R!MTE@M9*
+
+jprakash400027044784
+j8W@pVaJ6oBX
+
+my SVN 
+
+username : admin
+passwd : 2662 4,
+
+Issue with media reach on portal
+uberm2w3
+
+copy_thehindutamil
+epaper
+eP@Pe$1
+harshitha@9*
+
+##################################################################GS##############################
+
+gs upgrade from 8.7 to 9.5 in centos 6.5
+------------------------------------------------------
+wget https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs918/ghostscript-9.18.tar.gz
+wget https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs919/ghostscript-9.19.tar.gz
+tar -xzvf ghostscript-9.18.tar.gz
+cd ghostscript-9.18
+./configure
+make
+make install
+ln -s /usr/local/bin/gs /usr/bin/ghostscript
+if exits
+mv /usr/bin/ghostscript /usr/bin/ghostscript-old
+ln -s /usr/local/bin/gs /usr/bin/gs
+if exits
+mv /usr/bin/gs /usr/bin/gs-old
+which gs
+gs -v
+
+ubantu:
+
+$ ./configure  --without-jbig2dec
+...
+$ make CFLAGS+="-DHAVE_SYS_TIME_H=1"
+
+
+gs -dSAFER -dBATCH -dNOPAUSE -r300 -q -sDEVICE=jpeg -dTextAlphaBits=4 -dFirstPage=1 -dLastPage=1 -sOutputFile=/home/rajesh/OH-72_20190531_A0016+0014683716.pdf /home/rajesh/test.jpg
+
+
+GLIB 2.14 version
+
+mkdir ~/glibc_install; cd ~/glibc_install 
+wget http://ftp.gnu.org/gnu/glibc/glibc-2.14.tar.gz
+tar zxvf glibc-2.14.tar.gz
+cd glibc-2.14
+mkdir build
+cd build
+../configure --prefix=/opt/glibc-2.14
+make -j4
+sudo make install
+export LD_LIBRARY_PATH="/opt/glibc-2.14/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+
+###########################################################################################
+
+# Install Ghostscript-8.70
+wget http://ghostscript.com/releases/ghostscript-8.70.tar.gz
+tar -xzvf ghostscript-8.70.tar.gz
+cd ghostscript-8.70
+./configure
+make && make install
+ln -s /usr/local/bin/gs /usr/bin/ghostscript
+mv /usr/bin/ghostscript /usr/bin/ghostscript-old
+ln -s /usr/local/bin/gs /usr/bin/ghostscript
+ln -s /usr/local/bin/gs /usr/bin/gs
+mv /usr/bin/gs /usr/bin/gs-old
+ln -s /usr/local/bin/gs /usr/bin/gs
+which gs
+
+#wkhtmltopdf
+yum install -y xorg-x11-fonts-75dpi
+yum install -y xorg-x11-fonts-Type1
+yum install -y libXrender libXext openssl openssl-devel fontconfig
+
+wget 182.73.36.2/wkhtmltox.zip
+wget 182.73.36.2/search_system.zip
+wget 182.73.36.2/instance_valid1.pm.zip
+wget 182.73.36.2/modules.zip
+################################QPDF##################################################################
+
+// Login as a root user.
+# yum install zlib-devel pcre-devel gcc gcc-c++
+wget http://downloads.sourceforge.net/qpdf/qpdf-5.1.1.tar.gz
+# ./configure
+# make
+# make install
+##############################################################################################
+yum search openssl
+
+yum search ssh | grep perl
+
+
+M(\s*)?\n
+
+:1
+esc 1000 dd
+:set paste
+insert paste
+
+
+gitlab:
+
+Username : suthakar.r@ninestars.in
+Passwd : makesh@87
+
+
+L0Ki1995
+
+system login pass:
+Welcome@123
+
+Montitorx pass:     server access-request
+35.205.128.204
+35.199.156.54 	
+
+3368@sijo
+
+Mail pass:
+3368$zijo
+
+r!mte@m9*
+
+Time Tracker:
+sijo
+sijo@9*S
+
+KL2624229
+
+
+WAN IP :106.51.33.125
+
+95.186 \
+
+
+cbjxnfd    --input
+polhjmgf --output
+xcghjklp  --filesd
+
+
+h6TwqtQQm8prC1
+h6TwqtQQm8prC2
+h6TwqtQQm8prC3
+
+SHOW VARIABLES LIKE 'validate_password%';
+uninstall plugin validate_password;
+
+For Search::Elasticserach
+----------------------------------
+
+# yum install perl perl-CPAN perl-Net-SSLeay perl-IO-Socket-SSL
+# cpan Search::Elasticserach
+
+If its failed then,
+
+# cpanm need to download binary file and
+# cd /usr/bin
+# curl -L https://cpanmin.us/ -o cpanm
+# chmod +x cpanm
+# cpanm Search::Elasticserach
+
+### New mysql Config #############################################
+skip-innodb
+max_connections = 500
+interactive_timeout=60
+skip-locking
+
+thread_cache_size=100
+back_log=100
+max_connect_errors=10000
+open-files-limit=5000
+wait_timeout=600
+skip-name-resolve
+character_set_server=utf8
+max_allowed_packet=32M
+tmp_table_size=500M
+max_heap_table_size=500M
+
+key_buffer_size=1G
+query_cache_size=64M
+query_cache_type = 1
+query_cache_limit = 1024K
+query_cache_min_res_unit = 2k
+sort_buffer_size=16M
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+ENABLED_COLLECTORS 	As the --collectors.enabled flag, provide a comma-separated list of enabled collectors
+LISTEN_ADDR 	The IP address to bind to. Defaults to 0.0.0.0
+LISTEN_PORT 	The port to bind to. Defaults to 9182.
+METRICS_PATH 	The path at which to serve metrics. Defaults to /metrics
+TEXTFILE_DIR 	As the --collector.textfile.directory flag, provide a directory to read text files with metrics from
+
+./prometheus --config.file=prometheus.yml
+
+
+##############ES restore procedure############################
+
+ Indices available server procedure:
+
+ Set the repo path in elasticsearch.yml
+
+ path.repo: /data/es.snapshots/
+
+ Query to set local snapshot backup location
+	
+	curl -XPUT 'http://localhost:9200/_snapshot/my_backup' -H 'Content-Type: application/json' -d '{
+    "type": "fs",
+    "settings": {
+        "location": "/es.snapshots",
+        "compress": true
+    }
+}'
+
+Backup:
+
+curl -XPUT 'localhost:9200/_snapshot/my_backup/test_perculator?pretty' -H 'Content-Type: application/json' -d' { "indices": "test_perculator", "ignore_unavailable": "true", "include_global_state": false }'
+
+Restore Indices server procedure:
+
+Set the repo path in elasticsearch.yml
+
+ path.repo: /data/es.snapshots/
+
+ Query to set local snapshot backup location
+	
+	curl -XPUT 'http://localhost:9200/_snapshot/my_backup' -H 'Content-Type: application/json' -d '{
+    "type": "fs",
+    "settings": {
+        "location": "/data/es.snapshots",
+        "compress": true
+    }
+}'
+
+
+
+
+###############################################################
+
+wget https://github.com/lmenezes/cerebro/releases/download/v0.4.2/cerebro-0.4.2.tgz
+
+Well known ports
+
+20 – FTP Data (For transferring FTP data)
+
+21 – FTP Control (For starting FTP connection)
+
+22 – SSH (For secure remote administration which uses SSL to encrypt the transmission)
+
+23 – Telnet (For insecure remote administration)
+
+25 – SMTP (Mail Transfer Agent for e-mail server such as SEND mail)
+
+53 – DNS (Special service which uses both TCP and UDP)
+
+67 – Bootp
+
+68 – DHCP
+
+69 – TFTP (Trivial file transfer protocol uses udp protocol for connection less transmission of data)
+
+80 – HTTP/WWW(Apache)
+
+88 – Kerberos
+
+110 – POP3 (Mail delivery Agent)
+
+123 – NTP (Network time protocol used for time syncing uses UDP protocol)
+
+137 – NetBIOS (nmbd)
+
+139 – SMB-Samba (smbd)
+
+143 – IMAP
+
+161 – SNMP (For network monitoring)
+
+389 – LDAP (For centralized administration)
+
+443 – HTTPS (HTTP+SSL for secure web access)
+
+514 – Syslogd (udp port)
+
+636 – ldaps (both ctp and udp)
+
+873 – rsync
+
+989 – FTPS-data
+
+990 – FTPS
+
+993 – IMAPS
+
+1194 – openVPN
+
+1812 – RADIUS
+
+995 – POP3s
+
+2049 – NFS (nfsd, rpc.nfsd, rpc, portmap)
+
+2401 – CVS server
+
+3306 – MySql
+
+3690 – SVN
+
+6000-6063-X11
+
+##################################################################################
+Ceribro Instalation in windows:
+
+D:/sijo/cerebro-0.7.3 copy and paste it.
+
+https://javadl.oracle.com/webapps/download/AutoDL?BundleId=239858_230deb18db3e4014bb8e3e8324f81b43
+
+Ceribro Instalation in Ubuntu:
+
+cd /tmp
+wget https://github.com/lmenezes/cerebro/releases/download/v0.8.1/cerebro-0.8.1.tgz
+tar xfv cerebro-0.8.1.tgz
+cd cerebro-0.8.1/
+mkdir -p /usr/local/share/cerebro
+cp -r * /usr/local/share/cerebro/
+
+Now you can run Cerebro using this command:
+
+/usr/local/share/cerebro/bin/cerebro
+
+You should now be able to access Cerebro via your Webbrowser: http://<ip-address>:9000
+
+In addition, you can add a systemd service, to run Cerebro as service in the background. Create the file /lib/systemd/system/cerebro.service
+
+[Unit]
+Description=Cerebro
+After=syslog.target network.target
+
+[Service]
+User=root
+Type=simple
+Restart=on-failure
+ExecStart=/usr/local/share/cerebro/bin/cerebro
+
+[Install]
+WantedBy=multi-user.target
+
+systemctl daemon-reload
+systemctl start cerebro.service
+
+https://www.guru99.com/how-to-install-java-on-ubuntu.html
+
+
+
+
+    LD_LIBRARY_PATH=/opt/glibc-2.14/lib
+
+    export LD_LIBRARY_PATH.
+
+    The library is exposed during your current login session.
+
+    You can permanently link your new glibc version like so, but please read the WARNING below:
+
+    ln -sf /opt/glibc-2.14/glibc-2.14.so /lib/libc.so.6.
+
+##########################################################################################
+
+netstat -anp |grep 'tcp\|udp' | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -n   - watch how many connection
+############################################################
+
+192.168.12.43#suthakar#makesh#35922#Mercury-NEW
+192.168.12.44#sijo#sijo@9*#35922#Staging-NEW
+213.219.18.78#systems#systems@9**#22#PRC1-UK
+213.219.18.70#rim#rim@9*#22#PRCIRISH-UK
+122.183.243.41#rim#rim@9*#41999#Fantasy-CHE
+122.183.243.43#rajesh#rajesh9*#41999#OPOINT-KMF-CHE
+188.138.72.140#rajesh#rajesh9*#41999#SERVERLOFT-KMF-AWS	
+46.137.215.226#systems#systems@9*#41999#HINDU-APP9
+123.63.201.188#rajesh#rajesh@9*#41999#INFINITY-KANCHI
+122.183.243.57#rajesh#rajesh9*#41999#KMS-LIVE
+172.16.16.55#sakthivel#sakthivel9*#41999#KMS-Replication
+123.63.201.189#sakthivel#deepshi@784#41999#NEW-DELL-SERVER
+35.176.61.160#rim#rim@9*R#22#AWS-KMS-FTP1-London
+34.252.50.79#rajesh#rajesh@9*R#22#AWS-KMS-FTP2-Ireland
+172.16.16.36#rajesh#rajesh@9*#41999#KM-ITALY
+172.16.16.47#rajesh#rajesh9*#41999#KMItaly-Live-DB
+172.16.3.50#rajesh#rajesh9*#41999#KMItaly-Replication
+52.50.84.11#rim#rim@9*R#22#Gorkana-Live
+122.183.243.61#rajesh#rajesh@9*#41999#BLS-LIVE
+52.66.25.151#rim#rim@9*R#22#LFMI-NEW
+203.122.18.244#rajesh#rajesh@9*#41999#DDA-LIVE
+172.16.16.57#rajesh#rajesh9*#41999#NLN-Replication
+172.16.16.42#suthakar#makesh#41999#NLA-SERVER
+192.168.4.192#rajesh#rajesh@123#41999#BNL-Desktop-Chennai
+
+Connection closed by foreign host
+
+192.168.12.43#suthakar#makesh#35922#Mercury-NEW
+192.168.12.44#rajesh#rajesh@9*#35922#Staging-NEW
+213.219.18.78#systems#systems@9**#22#PRC1-UK
+213.219.18.70#rim#rim@9*#22#PRCIRISH-UK
+172.16.16.38#rajesh#rajesh@9*#41999#Fantasy-CHE
+172.16.16.52#rajesh#rajesh9*#41999#OPOINT-KMF-CHE
+188.138.72.140#rajesh#rajesh9*#41999#SERVERLOFT-KMF-AWS
+46.137.215.226#systems#systems@9*#41999#HINDU-APP9
+115.249.224.78#rajesh#rajesh@9*#41999#INFINITY-KANCHI
+172.16.16.50#rajesh#rajesh9*#41999#KMS-LIVE
+172.16.16.55#rajesh#rajesh9*#41999#KMS-Replication
+192.168.4.191#sakthivel#deepshi@784#41999#NEW-DELL-SERVER
+35.176.61.160#rim#rim@9*R#22#AWS-KMS-FTP1-London
+34.252.50.79#rajesh#rajesh@9*R#22#AWS-KMS-FTP2-Ireland
+172.16.16.36#rajesh#rajesh@9*#41999#KM-ITALY
+172.16.16.47#rajesh#rajesh9*#41999#KMItaly-Live-DB
+52.50.84.11#rim#rim@9*R#22#Gorkana-Live
+172.16.16.29#rajesh#rajesh@9*#41999#BLS-LIVE
+52.66.25.151#rim#rim@9*R#22#LFMI-NEW
+192.168.50.3#rajesh#rajesh@9*#41999#DDA-LIVE
+139.162.57.139#rim#rim@9*RIM#22#Zibbix-MonitorX
+172.16.16.39#rajesh#rajesh@9*#41999#KMItaly-Replication
+
+
+213.219.18.78#systems#systems@9**#22#PRC1-UK
+182.74.166.174#rajesh#rajesh@123#41999#DDA-Desktop-Kanchi
+
+rimuser@9*R
+
+wkyd9PGkq9dB*
+bluray archive microfilm
+
+201706
+201707
+201708
+201709
+
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/sda3              61G   51G  6.5G  89% /
+/dev/sda1             487M   22M  440M   5% /boot
+tmpfs                 5.9G     0  5.9G   0% /dev/shm
+/dev/sdb1             1.8T  1.5T  302G  83% /COC
+/dev/sdb2             1.8T  952G  716G  58% /PROSTAR
+
+* 9 * * * sh /COC/cronbkp/cron.sh
+
+crontab -l > /COC/cronbkp/earth_$(date +%Y%m%d).crontab
+
+35 23 * * * sh /COC/db_backup/dbbkp.sh
+
+mysqldump -uroot -p'kq9dB*' coc_wma2 | gzip > /COC/db_backup/coc_wma2_`date -I`.sql.gz
+touch /COC/db_backup/coc_wma2_dump-`date +%d-%m-%Y:%H:%M:%S`-completed
+mysqldump -uroot -p'kq9dB*' coc_wma1 | gzip > /COC/db_backup/coc_wma1_`date -I`.sql.gz
+touch /COC/db_backup/coc_wma1_dump-`date +%d-%m-%Y:%H:%M:%S`-completed
+mysqldump -uroot -p'kq9dB*' coc_wma | gzip > /COC/db_backup/coc_wma_`date -I`.sql.gz
+touch /COC/db_backup/coc_wma_dump-`date +%d-%m-%Y:%H:%M:%S`-completed
+mysqldump -uroot -p'kq9dB*' coc_bp3 | gzip > /COC/db_backup/coc_bp3_`date -I`.sql.gz
+touch /COC/db_backup/coc_bp3_dump-`date +%d-%m-%Y:%H:%M:%S`-completed
+mysqldump -uroot -p'kq9dB*' coc_icc | gzip > /COC/db_backup/coc_icc_`date -I`.sql.gz
+touch /COC/db_backup/coc_icc_dump-`date +%d-%m-%Y:%H:%M:%S`-completed
+mysqldump -uroot -p'kq9dB*' coc_eastview | gzip > /COC/db_backup/coc_eastview_`date -I`.sql.gz
+touch /COC/db_backup/coc_eastview_dump-`date +%d-%m-%Y:%H:%M:%S`-completed
+mysqldump -uroot -p'kq9dB*' coc_updatyrs | gzip > /COC/db_backup/coc_updatyrs_`date -I`.sql.gz
+touch /COC/db_backup/coc_updatyrs_dump-`date +%d-%m-%Y:%H:%M:%S`-completed
+mysqldump -uroot -p'kq9dB*' coc_tnt | gzip > /COC/db_backup/coc_tnt_`date -I`.sql.gz
+touch /COC/db_backup/coc_tnt_dump-`date +%d-%m-%Y:%H:%M:%S`-completed
+mysqldump -uroot -p'kq9dB*' coc_nxtyrs | gzip > /COC/db_backup/coc_nxtyrs_`date -I`.sql.gz
+touch /COC/db_backup/coc_nxtyrs_dump-`date +%d-%m-%Y:%H:%M:%S`-completed
+mysqldump -uroot -p'kq9dB*' coc_newsday | gzip > /COC/db_backup/coc_newsday_`date -I`.sql.gz
+touch /COC/db_backup/coc_newsday_dump-`date +%d-%m-%Y:%H:%M:%S`-completed
+mysqldump -uroot -p'kq9dB*' coc_prostar | gzip > /COC/db_backup/coc_prostar_`date -I`.sql.gz
+touch /COC/db_backup/coc_prostar_dump-`date +%d-%m-%Y:%H:%M:%S`-completed
+
+
+NLN_ISSUE_SETTINGS/NLN_IssueSettings.swf
+NLN_ISSUE_SETTINGS/NLN_IssueSettings_20181129.swf
+includes/issueFinalvalidation.php
+includes/validateXML.php
+zoning/zone.swf
+coc/coc_kmitaly_training/webfiles/rest
+
+#### Server Eninges ####
+* * * * * perl  /data/scripts/extractionScripts/extManager1.pl  >> /data/scripts/logs/`date -I`-extManager1.log
+* * * * * perl /data/scripts/logread.pl >> /data/scripts/logs/`date -I`-logread.log
+* * * * * perl /data/scripts/uploader_v4.1.pl >> /data/scripts/logs/`date -I`-uploader_v4.1.log
+* * * * * perl /data/scripts/ValidationAllocationManager.pl >> /data/scripts/logs/`date -I`-ValidationAllocationManager.log
+* * * * * perl /data/scripts/extractionScripts/fileAllocation_v1.pl >> /data/scripts/logs/`date -I`-fileAllocation_v1.log
+* * * * * perl /data/scripts/ftp_issue_Allocation_Manager_kmi.pl >> /data/scripts/logs/`date -I`-ftp_issue_Allocation_Manager_kmi.log
+#* * * * * perl /data/scripts/mailer.pl
+03 03 * * * sh /data/dbbackup/dbbackup.sh
+*/5 * * * * perl  /data/scripts/customerlogchange.pl
+* * * * * php /data/scripts/mailer.php >> /data/scripts/logs/mailer-`date -I`.log
+* */2 * * * php /home/systems/phpmailer.php >> /data/scripts/logs/phpmailer-`date -I`.log
+
+##### FeedInput,Input,Workfiles Backup #######
+01 02 * * *  perl /DATA/precise/scripts/workfiles_mov.pl >> /DATA/precise/scripts/logs/`date -I`-workfiles_mov.log
+01 01 * * * perl /DATA/precise/scripts/input_move.pl >> /DATA/precise/scripts/logs/`date -I`-input_move.log
+01 03 * * * perl /DATA/precise/scripts/feed_rem_prc.pl >> /DATA/precise/scripts/logs/`date -I`-feed_rem_prc.log
+
+##### Replication Check #####
+* * * * * perl /data/scripts/rep_slave.pl >> /data/scripts/logs/rep_slave-`date -I`.log
+
+############## Mail Alerts - Delivery Notification ##############
+00 */1 * * * php /data/mail_alerts/dlvry_notify_irish.php
+
+################################################CRON Backup###################################################
+
+* 5 * * * sh /data/cronbkp/cron.sh
+
+########################################DB Update################################################################
+
+30 13 * * * perl /data/scripts/db_procedure/precise_count.pl >> /data/scripts/logs/`date -I`-precise_count.log 2>&1
+
+
+
+nmap localhost
+zip -d 20190704_KMI_20190628_7445603_null_null_null_03368@sij001.zip "article_info.sql"
+netstat -an | grep :80 | wc -l
+grep -i -r 'out of memory' /var/log/  list
+vim .s3cfg
+ps auwx --sort rss  sort by mem usage
+/ftpdata/lftp_files/ ----kmspain our downloaded  path
+cat /etc/login.defs | grep -v ^#    --uncomnt lines
+update-rc.d <service> enable -ubuntu chk
+find . -type 'd' | grep -v "NameToExclude" | xargs rmdir
+3368@sijoi]https://www.cloudping.info/
+itop -o
+split -b 50M tuxlap.txt
+split -b 500MB httpd.log
+initctl list
+initctl stop logstash
+nohup ./node_exporter &
+nload
+o conf prerequisites_policy follow
+o conf commit
+MyD6Km$@9*-cison canada
+Sancia@123 -sijo.cj
+TEAMRIM@9* - rimteam
+nethogs
+ufw -firewall
+13.232.142.48-gitlab-rimuser@9*R
+kmitaly ES server- work with nginx not httpd
+Kmitaly-Archive ES- work with httpd
+mytop -u root --prompt
+my.conf ----#blind address
+unlock issue to the  fileinfo
+rpm -qa | grep php
+ls -ld */ - folder listing
+ls -l | grep ^d | wc -l    --directory count
+ls -lt - old date file listing
+curl ifconfig.me  -- public IP
+sudoers - privillage
+devuser/de$*U$eR - kms DB
+3368@sijo
+instmodsh -cpan module list
+$!vaeu$er - slave_user
+MyD6Km$@9*-zurich
+perl -e "print @INC"
+W29*UP9*ed?-kmitalytraining
+B@CkU9i9d
+grep -r "192.168.12..43" *
+GLIB version check-    ldd --version
+DDA server restart means start screen service
+cbjxnfd    --input
+polhjmgf --output
+xcghjklp  --files
+182.73.36.2 - staging
+wkyd9PGkq9dB*-Newbase Portal
+h6TwqtQQm8prC1  -PRCUK
+h6TwqtQQm8prC3-PRCIRISH
+h6TwqtQQm8prC2 -PRCUK-DB/Repli
+wkyd9PGkq9dB* -----root/prc
+wkyd9PG992$-INFINITY
+MyD6Km$@9*-DDA
+x34jK6h1P3KMi@-KMITALY
+MyD6Km$@9* -KMSPAIN
+Gl0bal@9- KMSPIN REPLI
+MyD6Km$@9*-NLN1
+x34jK6h1P3- PWD
+cwm79pg992-NLAECW-MYSQL
+wkyd9PGkq9dB*- NLAECW REPLI
+MyD6Km$@9*-nln
+NewB@$e9#
+125.63.79.174- WAN IP (Spectra Net)
+182.73.26.38 -WAN IP (AIRTEL)
+sijo3368
+3368@sijo- edx.org
+TEAMRIM@9*R
+3368#zijo
+
+http://52.8.45.62/myDATAbase/
+U: burrelles
+p: cwm79PG992
+
+MyD6Km$@9* -mysql jstor
+
+MyD6Km$@9* - kmitaly_Archive New
+
+KMSPAIN RDS
+http://34.252.50.79/myDATAbase/
+http://52.59.94.106/myDATAbase/
+user :: devuser
+pass :: de$*U$eR
+
+sijo@4468
+burftp.burrellesluce.com
+ftp9stout
+ktbm3mur
+
+My#Sq!9@$$wd - DDA DESK
+MyD6Km$@9* - DDA Live
+
+213.219.18.79
+Ninestars
+ninestars7
+rimteam@9*R-nlacew mail
+
+
+
+
+/etc/init.d/elasticsearch status
+/etc/init.d/elasticsearch start
+:%s/name/newnam/gci
+
+
+
+
+####################DDA server##################
+203.122.18.243#rajesh#rajesh@9*#41999#DDA-DB
+
+1211926
+
+1212064

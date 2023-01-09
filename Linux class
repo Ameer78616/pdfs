@@ -1,0 +1,126 @@
+ls -i										//to get the file/folder index number
+mv [folder/files] [destination_directory]	//to move files to destination directory
+mkdir -m 777 [directory/new_folder]			//give permission while creating the folder
+mv [folder/files] [folder/files] [Des_Dir]	//move more than one folders/files to destination directory
+escape dw									//delete one word[2dw to delete 2 words]
+escape u 									//undo
+escape dl 									//delete one letter[2dl to delete 2 letters]
+escape dd 									//delete one line[2dd to delete 2 line]
+line#yy										//to copy
+escape p 									//to paste the copied line as well deleted line
+:1,$y                                       //copy line 1 to last 
+:se nu 										//show the line number
+:(range)d									//delete the range of lines[2,5d it will delete 2nd line to 5th line]
+:4,$d 										//delete completely after 4th line
+:1,$s/nice/very nice/g 						//s-(substitute); $-(Lastline); g(Globally)
+:1,$s/^/firstword/g 						//range of lines will get 
+find -name '*.log' -mtime +15 -delete       //delete files which is older than 15 days
+vim /etc/vsftpd/chrootlist					//to add FTP users
+ln -s /path/to/foldername data				//symbolic link
+scp -P 22 root@ip /path/to/cp/file 			//to copy file one to another server
+find . -type f -name "*Server.PDF"
+date +"%A"                                  //todays day it will
+gpg --dearmor                               //The gpg --dearmor command is used to convert the key into a format that apt recognizes
+ls -d */                                    //command to list only directories
+ls | head                                   //common prefix of all the files
+ls 2019*                                    //delete all the folder/files starts with 2019
+ls -ltr | wc -l                             //get the count of files in a dir
+ps -ef | grep unique name                   //To find a unique process's process ID
+kill - 9 PID                                //To kill the process
+netstat -tulpn | grep :80
+netstat -tulpn | grep --color :80
+ln -s [Path name]                           //Symbolic link
+iostat -x 2                                 //To check io status
+adduser -s /sbin/no login -d /path/of/the/directory username
+
+free -m | awk 'NR==2{printf "Memory Usage: %s/%sMB (%.2f%%)\n", $3,$2,$3*100/$2 }'
+df -h | awk '$NF=="/"{printf "Disk Usage: %d/%dGB (%s)\n", $3,$2,$5}'
+top -bn1 | grep load | awk '{printf "CPU Load: %.2f\n", $(NF-2)}' 
+
+vim file1 file2;
+Step1 : 1yy to copy specific line;
+Step2 : :n! - switch to another file;
+Step3 : p - to paste the line
+
+find . -iname "nitf*" | xargs ls -lrt | wc -l
+
+----------------------------------------------------------------------------------------
+Mysql commands
+----------------------------------------------------------------------------------------
+
+mysqldump --routines -u root -p databasename tablename > table.sql; //take dump for specific table
+mysqldump --routines -u root -p databasename > table.sql;
+
+mysqldump --routines -uroot -p'kq9dB*' ocr_itr | gzip > /cifs_ninestar/ninestar/bcp_deployment/07052022/ocr_itr_`date -I`.sql.gz
+
+mysqldump --routines -uroot -p'kq9dB*' itrcpc_ocr_filenet | gzip > /cifs_ninestar/ninestar/bcp_deployment/07052022/itrcpc_ocr_filenet_`date -I`.sql.gz
+
+CREATE DATABASE dbname;
+SHOW DATABASES;
+USE dbname;
+SHOW TABLES;
+CREATE TABLE Testdata (Name char(20), Emp_ID varchar(20), Phonenumber int(10));
+INSERT INTO Testdata VALUES ('gopi',12583,'V.P.THANGAVEL',9090909090);
+SELECT * FROM Testdata;
+SELECT COLUMN FROM Testdata;
+SELECT DISTINCT FROM Country;               //Select all the different values from the Country column in the Customers table
+
+to connect sql - mysql -u root -p
+to check sql mode - show variables like '%sql_mode%';
+show processlist;
+
+:%s/findname/replacename/gci
+
+find /kstga1/coc_bnlmono_new/files/workfiles/BNL000070/00360312 -lname "/data/coc_bnlmono_new/files/input/BNL000070/360312/*.tif" \
+
+----------------------------------------------------------------------------------------
+tar before Excluding folders
+----------------------------------------------------------------------------------------
+
+tar czf webfiles_inventory.tar.gz --exclude='files' --exclude='input' --exclude='output' --exclude='zonexmlsave' --exclude='logs-backpush' --exclude='logs' --exclude='log_ppa' --exclude='log_unlock' webfiles
+
+tar czf scripts_inventory.tar.gz --exclude='files' --exclude='input' --exclude='output' --exclude='zonexmlsave' --exclude='logs-backpush' --exclude='logs' --exclude='log_ppa' --exclude='log_unlock' scripts
+
+A - Address,
+AA - v6 address,
+CNAME - canonicial record,
+CAA - certificatino authority authorisation,
+MX - mail exchange record,
+NA PTR - name authority pointer record,
+NS - name server,
+PTR - pinter record,
+SOA - start of authority,
+SPF - sender policy framework,
+SRV - service locator,
+TXT - text record - 12
+
+------------------------------------------------------------------------------
+How to change FTP to git on a server
+------------------------------------------------------------------------------
+
+1. Create a git user in that server.
+2. No need to setup password for git.
+3. Login as git user (su git).
+4. Generate ssh key (ssh-keygen).
+5. Copy the ssh pub key (/home/git/.ssh/id_rsa.pub)
+6.Add the id_rsa.pub key in gitlab (user settings/SSH Keys/)
+7. Go to server clone the code from repository - Gitlab-> project-> Clone with ssh[copy URL] - (git clone -b scripts git@gitlab.ninestars.in:CoC_MMS/coc_nla_eclips.git)
+8. Give Full permission to the directory which has been cloned (chmod -R 777 scripts)
+
+
+------------------------------------------------------------------------------
+GCP Commands
+------------------------------------------------------------------------------
+create a bucket mb -c regional -l asia-east1 -p project id
+
+mb - make bucket
+-c - storage class
+regional
+-l - asia-east1(location)
+-p - project id
+
+
+suresh@NITL-009957:gcloud auth activate-service-account --key-file=C:\Users\12583\Downloads\ninestars[3175].json
+suresh@NITL-009957:/usr/bin$ gsutil ls gs://isentia-anz-print
+
+https://www.nla-eclipsweb.com/service/redirector/article/81427630.pdf?OrgID=4305

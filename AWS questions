@@ -1,0 +1,72 @@
+How many instance types are there in AWS?
+	General Purpose (A1, T2, T3, T3a, T4g, M4, M5, M5a, M5n, M6g)
+	Compute Optimized (C4, C5, C5a, C5n, C6g)
+	Memory Optimized (R4, R5, R5a, R5n, R6g, X1, X1e, Z1d)
+	Accelerated Computing (P2, P3, F1, G3, G4)
+	Storage Optimized (D2, H1, I3, I3en)
+
+What is Private Key vs Pem Key?
+	Public Key:A key pair, consisting of a public key and a private key, is a set of security credentials that you use to prove your identity when connecting to an Amazon EC2 instance. Amazon EC2 stores the public key on your instance, and you store the private key
+	Private Key:A key pair, consisting of a public key and a private key, is a set of security credentials that you use to prove your identity when connecting to an Amazon EC2 instance
+
+List some service in AWS which is called as serverless compute
+	AWS Lambda.
+	AWS Fargate
+	AWS DynamoDB
+	Amazon Aurora
+	Amazon SNS
+	Amazon SQS
+	AWS CloudWatch
+	Amazon QuickSight
+	AWS Step Functions
+	Amazon API Gateway
+	Amazon Cognito
+	AWS KMS
+How many ways to access aws services? List me?
+	There are six main ways of accessing AWS services
+	 1, a graphical web interface. The AWS management console.
+	 2, the AWS command line interface, CLI.
+	 3, calling application programming interfaces, or API directly.
+	 4, using AWS software development kits, SDK.
+	 5, third party tools.
+	 6, the AWS mobile application
+How can one safeguard the EC2 instances while running in a VPC?
+
+Ans: In a VPC, the security of groups is used for the better protection of EC2 instances. INBOUND, as well as OUTBOUND traffic, both can be configured from the group of security, which further allows secured access to the instances of EC2? The group of security robotically refuses any kind of unauthorized access done on your EC2 instances.
+
+What are some of the features of S3 Bucket?
+
+Ans:
+
+Encryption
+Static web hosting
+Object lifecycle management
+Versioning
+Unlimited storage
+
+In RDS services, name and mention some of the database engines available?
+
+Ans:
+
+MYSQL
+Maria DB
+MSSQL server
+Amazon AURORA
+Postgres DB
+Oracle DB
+
+Which of the following Amazon AWS service used while hosting a static website?
+Ans: Amazon Simple Storage Service(S3)
+
+Among the following, what is the maximum size of a bucket in S3?
+5 Terabytes
+
+In S3, among the following options, how many buckets can be created at a time?
+Ans: 100
+
+Tell about some AWS services that are not region-specific:
+
+Route 53
+CloudFront
+IAM
+Web Application Firewall
