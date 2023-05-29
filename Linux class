@@ -51,9 +51,6 @@ Mysql commands
 mysqldump --routines -u root -p databasename tablename > table.sql; //take dump for specific table
 mysqldump --routines -u root -p databasename > table.sql;
 
-mysqldump --routines -uroot -p'kq9dB*' ocr_itr | gzip > /cifs_ninestar/ninestar/bcp_deployment/07052022/ocr_itr_`date -I`.sql.gz
-
-mysqldump --routines -uroot -p'kq9dB*' itrcpc_ocr_filenet | gzip > /cifs_ninestar/ninestar/bcp_deployment/07052022/itrcpc_ocr_filenet_`date -I`.sql.gz
 
 CREATE DATABASE dbname;
 SHOW DATABASES;
@@ -118,9 +115,3 @@ mb - make bucket
 regional
 -l - asia-east1(location)
 -p - project id
-
-
-suresh@NITL-009957:gcloud auth activate-service-account --key-file=C:\Users\12583\Downloads\ninestars[3175].json
-suresh@NITL-009957:/usr/bin$ gsutil ls gs://isentia-anz-print
-
-https://www.nla-eclipsweb.com/service/redirector/article/81427630.pdf?OrgID=4305
