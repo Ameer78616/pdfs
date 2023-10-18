@@ -31,3 +31,4 @@ Well known ports
 2401 – CVS server
 3306 – MySql
 3690 – SVN
+jenkins - 8080
